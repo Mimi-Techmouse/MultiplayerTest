@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class mt_userhandling : MonoBehaviour {
 
@@ -95,7 +96,7 @@ public class mt_userhandling : MonoBehaviour {
             case mt.RESPONSE_USER.REGISTER_SUCCESS:     LoginPanel.SetActive(true); InfoPanel.SetActive(false); break;
             case mt.RESPONSE_USER.DOESNT_EXIST:         LoginPanel.SetActive(true); InfoPanel.SetActive(false); break;
             case mt.RESPONSE_USER.LOGIN_FAIL:           LoginPanel.SetActive(true); InfoPanel.SetActive(false); break;
-            case mt.RESPONSE_USER.LOGIN_SUCCESS:        LoginPanel.SetActive(true); InfoPanel.SetActive(false); break;
+            case mt.RESPONSE_USER.LOGIN_SUCCESS:        SceneManager.LoadScene("Menu_Lobby"); break;
         }
 
     }
@@ -192,6 +193,10 @@ public class mt_userhandling : MonoBehaviour {
                 Debug.Log(pages[page] + ": Error: " + webRequest.error);
             } else {
                 lastResponse = (mt.RESPONSE_USER)int.Parse(webRequest.downloadHandler.text);
+                if (lastResponse == mt.RESPONSE_USER.LOGIN_SUCCESS) {
+                    PlayerPrefs.SetString("user_name", sName);
+                    PlayerPrefs.SetString("user_password", sPassword);
+                }
 
                 DisplayResponse();
             }
