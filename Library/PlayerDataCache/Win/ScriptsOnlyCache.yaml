@@ -2,8 +2,13 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - TMPro.Examples.gui_menu_textreveal
+    - mt_gamehandling
+    - mt_gameinstance
+    - mt_infopanel
+    - mt_joinedgameinstance
     - mt_lobbyhandling
     - mt_movement
+    - mt_spawnplayer
     - mt_userhandling
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
@@ -46,6 +51,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.Mask
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
@@ -55,6 +61,51 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
+    Assets/Scenes/Game_TestLevel.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11416}
+    - Class: 114
+      Script: {instanceID: 11910}
+    - Class: 114
+      Script: {instanceID: 12258}
+    - Class: 114
+      Script: {instanceID: 12622}
+    - Class: 114
+      Script: {instanceID: 13372}
+    - Class: 114
+      Script: {instanceID: 13454}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 143
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
     Assets/Scenes/Menu_Lobby.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -77,11 +128,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11172}
     - Class: 114
+      Script: {instanceID: 11386}
+    - Class: 114
       Script: {instanceID: 11388}
     - Class: 114
       Script: {instanceID: 11434}
     - Class: 114
+      Script: {instanceID: 11456}
+    - Class: 114
       Script: {instanceID: 11544}
+    - Class: 114
+      Script: {instanceID: 11572}
+    - Class: 114
+      Script: {instanceID: 11678}
     - Class: 114
       Script: {instanceID: 11790}
     - Class: 114
@@ -91,7 +150,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12130}
     - Class: 114
+      Script: {instanceID: 12384}
+    - Class: 114
       Script: {instanceID: 12504}
+    - Class: 114
+      Script: {instanceID: 12658}
     - Class: 114
       Script: {instanceID: 12662}
     - Class: 114
@@ -100,6 +163,14 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12998}
     - Class: 114
       Script: {instanceID: 13454}
+    - Class: 114
+      Script: {instanceID: 35616}
+    - Class: 114
+      Script: {instanceID: 42884}
+    - Class: 114
+      Script: {instanceID: 49032}
+    - Class: 114
+      Script: {instanceID: 79734}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -233,6 +304,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13486}
     - Class: 114
       Script: {instanceID: 13494}
+    - Class: 114
+      Script: {instanceID: 42884}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -702,7 +775,7 @@ ScriptsOnlyBuild:
     className: PunCockpitEmbed
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 22ff8414e6257e25f940715c5d50bf73
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: mt_lobbyhandling
@@ -1786,8 +1859,33 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 343d20e1d92f8e2c7352d4c3de04b3c4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_gamehandling
+  - hash:
+      serializedVersion: 2
+      Hash: 5d56aaaa88a639d47a8713471b3a67d3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_gameinstance
+  - hash:
+      serializedVersion: 2
+      Hash: ffd1d84658e6afb9fc10951b497f8733
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_joinedgameinstance
+  - hash:
+      serializedVersion: 2
+      Hash: 3475c5b518fcd5fc6c54ea1fc09f66f2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_infopanel
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu_StartScreen.unity
   - Assets/Scenes/Menu_Lobby.unity
+  - Assets/Scenes/Game_TestLevel.unity
   playerPath: C:/Users/miria/Desktop/Multiplayer Test/Multiplayer Test.exe
