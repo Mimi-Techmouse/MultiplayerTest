@@ -2,14 +2,21 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - TMPro.Examples.gui_menu_textreveal
+    - mt_camera_freelook
     - mt_gamehandling
     - mt_gameinstance
     - mt_infopanel
     - mt_joinedgameinstance
     - mt_lobbyhandling
     - mt_movement
+    - mt_multplayerswitch
+    - mt_shipbody
     - mt_spawnplayer
     - mt_userhandling
+    - vp_FPController
+    - vp_FPInput
+    - vp_FPPlayerEventHandler
+    - vp_Input
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -80,9 +87,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -95,16 +106,30 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12258}
     - Class: 114
-      Script: {instanceID: 12622}
+      Script: {instanceID: 13380}
     - Class: 114
-      Script: {instanceID: 13372}
+      Script: {instanceID: 13462}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 17748}
+    - Class: 114
+      Script: {instanceID: 17852}
+    - Class: 114
+      Script: {instanceID: 17958}
+    - Class: 114
+      Script: {instanceID: 74182}
+    - Class: 114
+      Script: {instanceID: 79140}
+    - Class: 114
+      Script: {instanceID: 79146}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 143
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     Assets/Scenes/Menu_Lobby.unity:
     - Class: 1
@@ -150,27 +175,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12130}
     - Class: 114
-      Script: {instanceID: 12384}
+      Script: {instanceID: 12370}
     - Class: 114
-      Script: {instanceID: 12504}
+      Script: {instanceID: 12386}
     - Class: 114
-      Script: {instanceID: 12658}
+      Script: {instanceID: 12506}
     - Class: 114
-      Script: {instanceID: 12662}
+      Script: {instanceID: 12660}
     - Class: 114
-      Script: {instanceID: 12926}
+      Script: {instanceID: 12664}
     - Class: 114
-      Script: {instanceID: 12998}
+      Script: {instanceID: 12720}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 35616}
+      Script: {instanceID: 12932}
     - Class: 114
-      Script: {instanceID: 42884}
+      Script: {instanceID: 13004}
     - Class: 114
-      Script: {instanceID: 49032}
+      Script: {instanceID: 13332}
     - Class: 114
-      Script: {instanceID: 79734}
+      Script: {instanceID: 13462}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -257,55 +282,69 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12258}
     - Class: 114
-      Script: {instanceID: 12384}
+      Script: {instanceID: 12386}
     - Class: 114
-      Script: {instanceID: 12440}
+      Script: {instanceID: 12442}
     - Class: 114
-      Script: {instanceID: 12504}
+      Script: {instanceID: 12506}
     - Class: 114
-      Script: {instanceID: 12516}
+      Script: {instanceID: 12518}
     - Class: 114
-      Script: {instanceID: 12596}
+      Script: {instanceID: 12598}
     - Class: 114
-      Script: {instanceID: 12606}
+      Script: {instanceID: 12608}
     - Class: 114
-      Script: {instanceID: 12610}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12622}
+      Script: {instanceID: 12624}
     - Class: 114
-      Script: {instanceID: 12658}
+      Script: {instanceID: 12660}
     - Class: 114
-      Script: {instanceID: 12662}
+      Script: {instanceID: 12664}
     - Class: 114
-      Script: {instanceID: 12678}
+      Script: {instanceID: 12680}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12842}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 12860}
     - Class: 114
-      Script: {instanceID: 12866}
+      Script: {instanceID: 12870}
     - Class: 114
-      Script: {instanceID: 12926}
+      Script: {instanceID: 12898}
     - Class: 114
-      Script: {instanceID: 12998}
+      Script: {instanceID: 12932}
     - Class: 114
-      Script: {instanceID: 13194}
+      Script: {instanceID: 13004}
     - Class: 114
-      Script: {instanceID: 13324}
+      Script: {instanceID: 13200}
     - Class: 114
-      Script: {instanceID: 13364}
+      Script: {instanceID: 13330}
     - Class: 114
       Script: {instanceID: 13372}
     - Class: 114
-      Script: {instanceID: 13404}
+      Script: {instanceID: 13380}
     - Class: 114
-      Script: {instanceID: 13454}
+      Script: {instanceID: 13412}
     - Class: 114
-      Script: {instanceID: 13486}
+      Script: {instanceID: 13462}
     - Class: 114
       Script: {instanceID: 13494}
     - Class: 114
-      Script: {instanceID: 42884}
+      Script: {instanceID: 13502}
+    - Class: 114
+      Script: {instanceID: 17712}
+    - Class: 114
+      Script: {instanceID: 17748}
+    - Class: 114
+      Script: {instanceID: 17852}
+    - Class: 114
+      Script: {instanceID: 17958}
+    - Class: 114
+      Script: {instanceID: 74182}
+    - Class: 114
+      Script: {instanceID: 79140}
+    - Class: 114
+      Script: {instanceID: 79146}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -421,7 +460,7 @@ ScriptsOnlyBuild:
     className: PhotonStatsGui
   - hash:
       serializedVersion: 2
-      Hash: 8ae3331b163cc121825eeed3975d6c4d
+      Hash: 7eef871aeaf5495b212414f6b3cc47d0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChatGui
@@ -955,7 +994,7 @@ ScriptsOnlyBuild:
     className: IgnoreUiRaycastWhenInactive
   - hash:
       serializedVersion: 2
-      Hash: 18d89cb858d0cf8a1f38bb786789eaa7
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChatAppIdCheckerUI
@@ -1061,6 +1100,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: ffd1d84658e6afb9fc10951b497f8733
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_joinedgameinstance
   - hash:
       serializedVersion: 2
       Hash: 3cae62e09a50c5d5aae8d0536b3d8fde
@@ -1279,6 +1324,12 @@ ScriptsOnlyBuild:
     className: TMP_TextSelector_A
   - hash:
       serializedVersion: 2
+      Hash: 343d20e1d92f8e2c7352d4c3de04b3c4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_gamehandling
+  - hash:
+      serializedVersion: 2
       Hash: 11bdd61587db747672b66c52442395d8
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1379,6 +1430,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextSelector_B
+  - hash:
+      serializedVersion: 2
+      Hash: 5d56aaaa88a639d47a8713471b3a67d3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_gameinstance
   - hash:
       serializedVersion: 2
       Hash: 9db963832ef7feebd35f44e6ad6f646c
@@ -1645,6 +1702,12 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
+      Hash: 3475c5b518fcd5fc6c54ea1fc09f66f2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_infopanel
+  - hash:
+      serializedVersion: 2
       Hash: c656dcc13ae391b68d594cc8f9c590b0
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1861,28 +1924,658 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 343d20e1d92f8e2c7352d4c3de04b3c4
+      Hash: 103d1160b7569e0e0296b7ac8fd42338
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: mt_gamehandling
+    className: mt_spacemovement
   - hash:
       serializedVersion: 2
-      Hash: 5d56aaaa88a639d47a8713471b3a67d3
+      Hash: 2dddc0e651687ac56d4d7c684b4f2e9d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: mt_gameinstance
+    className: vp_ItemPickup
   - hash:
       serializedVersion: 2
-      Hash: ffd1d84658e6afb9fc10951b497f8733
+      Hash: b738f7629c88427421f17360f8dfcfa3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: mt_joinedgameinstance
+    className: vp_SurfaceManager
   - hash:
       serializedVersion: 2
-      Hash: 3475c5b518fcd5fc6c54ea1fc09f66f2
+      Hash: 2164794588e36b79719a8428c5a77483
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: mt_infopanel
+    className: vp_Regenerator
+  - hash:
+      serializedVersion: 2
+      Hash: 4a5447163e5e545ba0f15a13b9cedf75
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPWeapon
+  - hash:
+      serializedVersion: 2
+      Hash: 3ad449519a3d4ff8a09d02e1544437f5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlayerItemDropper
+  - hash:
+      serializedVersion: 2
+      Hash: 74c4804179088d90828c7915728d6f4b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPWeaponReloader
+  - hash:
+      serializedVersion: 2
+      Hash: cfc6ce118e269cff183cd64ada2111c6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPWeaponThrower
+  - hash:
+      serializedVersion: 2
+      Hash: 8c4c3c22fd20d22935385036457ac69a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlatformSwitch
+  - hash:
+      serializedVersion: 2
+      Hash: 9813b24070016d6b582c9df21ae853c8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FootstepManager
+  - hash:
+      serializedVersion: 2
+      Hash: 9fba3048fb35641c06c317ea08fcf610
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_AngleBob
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPSDemoPlaceHolderMessenger
+  - hash:
+      serializedVersion: 2
+      Hash: 6e28322bc79608c1e0c627e06d8f6d00
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPSDemo3
+  - hash:
+      serializedVersion: 2
+      Hash: 76d221c7187fa2076974fa6ef935c6f2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Input
+  - hash:
+      serializedVersion: 2
+      Hash: 598e24e931dc22e4de77949d1da82ecb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Respawner
+  - hash:
+      serializedVersion: 2
+      Hash: 183ed18d3f63e0fd6519461e0d29d870
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_StatePowerup
+  - hash:
+      serializedVersion: 2
+      Hash: 338683579e922af863681739ebe86987
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_DecalManager
+  - hash:
+      serializedVersion: 2
+      Hash: 94f2305021c78ce3c6475a63b61b4d9a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPSDemo1
+  - hash:
+      serializedVersion: 2
+      Hash: 4a261ce993de461fc641655ad4ac3292
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_RigidbodyFX
+  - hash:
+      serializedVersion: 2
+      Hash: b2778de43cb0a00013a97769b1cd89da
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_CharacterController
+  - hash:
+      serializedVersion: 2
+      Hash: bb48ba760679eff99311051f761fe09a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_RagdollHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 598e24e931dc22e4de77949d1da82ecb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlayerRespawner
+  - hash:
+      serializedVersion: 2
+      Hash: 9dcabef96d2232c77936cb758acbcff4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FadingDecal
+  - hash:
+      serializedVersion: 2
+      Hash: 8921a6544b1da2d192d6a5b75a1d5a7d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPInput
+  - hash:
+      serializedVersion: 2
+      Hash: 74c4804179088d90828c7915728d6f4b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPPistolReloader
+  - hash:
+      serializedVersion: 2
+      Hash: 89e65a732c79b4a28f3533b7edbea153
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPCamera
+  - hash:
+      serializedVersion: 2
+      Hash: e363e5be22d5cdf59773127f16cc6a1c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPInventory
+  - hash:
+      serializedVersion: 2
+      Hash: 6725f85ebde9517039a73f0a99f69f10
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_3rdPersonWeaponAim
+  - hash:
+      serializedVersion: 2
+      Hash: 73d9334cdb449b4b435285af3f490eeb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_MovingPlatform
+  - hash:
+      serializedVersion: 2
+      Hash: 86d2abb054bfd3416839c58f8af509b0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SurfaceIdentifier
+  - hash:
+      serializedVersion: 2
+      Hash: a7aacd763bd2ae813c03f22dd61ab339
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Bob
+  - hash:
+      serializedVersion: 2
+      Hash: da2eb914c79ba55a29d81d085eebbc12
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPSDemo2
+  - hash:
+      serializedVersion: 2
+      Hash: 56ba37008631ccd404df60433afbfa1e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Effect
+  - hash:
+      serializedVersion: 2
+      Hash: d2af9aeeeecdf67e8fa315ea3e51b76f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_HealthPowerup
+  - hash:
+      serializedVersion: 2
+      Hash: 71811eca72412d1e5063ac5d5b55ae00
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPBodyAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPEarthquake
+  - hash:
+      serializedVersion: 2
+      Hash: 81998edf98c59907054828dba674eb75
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlayerDamageHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 2efc1f3e723166b7599c55084a33742a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_ImpactEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 71f46c2d20734634014a38cbbbf32a6b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_UnitBankType
+  - hash:
+      serializedVersion: 2
+      Hash: 0d8a20f323d168e75766d71e658e819f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_ItemType
+  - hash:
+      serializedVersion: 2
+      Hash: 4b7b4b45275456f8bad7c650dd262f27
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_HitscanBullet
+  - hash:
+      serializedVersion: 2
+      Hash: 62b6c36d3678126cd7618d515a1073b4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Remover
+  - hash:
+      serializedVersion: 2
+      Hash: 8e5f4d1957111c5dec169b9c1ec32a47
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_WeaponThrower
+  - hash:
+      serializedVersion: 2
+      Hash: 4c06ed0e7ef301e8c88d7002d02b8efc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_DoomsDayDevice
+  - hash:
+      serializedVersion: 2
+      Hash: 7a9b1a9fafc92f12727f2d7ada52e8d4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FXBullet
+  - hash:
+      serializedVersion: 2
+      Hash: 5fcf9492d41ad99f7db24369f4bc8f43
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_BodyAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 36cbfd6a2d6f81781ca2c4e699030db5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Switch
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_MuzzleFlash
+  - hash:
+      serializedVersion: 2
+      Hash: 3eaf16cf3cc35dc5ff564c27ddc5d836
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Inventory
+  - hash:
+      serializedVersion: 2
+      Hash: cf97c2672583f2ee8b25103b57c33db8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SurfaceEffect
+  - hash:
+      serializedVersion: 2
+      Hash: e4e99408dedb9e4f03ad9ce314d71559
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Shooter
+  - hash:
+      serializedVersion: 2
+      Hash: b9f10e0eb6953bd1d35eeb88e478472d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPCameraSmoothToggle
+  - hash:
+      serializedVersion: 2
+      Hash: 50a69b1bd3ef46440422672e781dd1b3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_WeaponHandler
+  - hash:
+      serializedVersion: 2
+      Hash: e45703a302cab1fbc7d7c3f2f15ae390
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PainHUD
+  - hash:
+      serializedVersion: 2
+      Hash: 5f4f496bf12afda5543b0dc27bf54cd7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Explosion
+  - hash:
+      serializedVersion: 2
+      Hash: 5e8d130d5eb7c42cbe5cfe5db0826b75
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Weapon
+  - hash:
+      serializedVersion: 2
+      Hash: 34097f909aaa024be46108b51d1ca595
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPController
+  - hash:
+      serializedVersion: 2
+      Hash: 43158d589bfc6df466b5d1de4d9d376a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Toss
+  - hash:
+      serializedVersion: 2
+      Hash: 8e508371663e889eaba633beb657ab6a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SimpleFiring
+  - hash:
+      serializedVersion: 2
+      Hash: f3094e8125e0be470bfc9dcbcce851b9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_WeaponReloader
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Timer
+  - hash:
+      serializedVersion: 2
+      Hash: abcc8e62655d75eb98ae0b0aacb63cfd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Debris
+  - hash:
+      serializedVersion: 2
+      Hash: aa80250b32ff6a8f1452443bd4a7dd8b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_DamageHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 86d2abb054bfd3416839c58f8af509b0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SurfaceIdentifier
+  - hash:
+      serializedVersion: 2
+      Hash: 2d4a614095d8bedfddfc68a3300f534c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Spin
+  - hash:
+      serializedVersion: 2
+      Hash: 1525c20141e66648c2c17af52b246c56
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_ItemIdentifier
+  - hash:
+      serializedVersion: 2
+      Hash: 856ae04b1ca126b888106506423f5d8f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_DamageTransfer
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_KillZone
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_WaypointGizmo
+  - hash:
+      serializedVersion: 2
+      Hash: 0f86c0b5509d11b090ecc8ab692e1e9a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPWeaponShooter
+  - hash:
+      serializedVersion: 2
+      Hash: 070a5abd2287c9b5126d35dc5d16b202
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PulsingLight
+  - hash:
+      serializedVersion: 2
+      Hash: b2778de43cb0a00013a97769b1cd89da
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_CapsuleController
+  - hash:
+      serializedVersion: 2
+      Hash: 279a577e12c142a32c63569a30b36939
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPInteractManager
+  - hash:
+      serializedVersion: 2
+      Hash: 50a69b1bd3ef46440422672e781dd1b3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPWeaponHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 338683579e922af863681739ebe86987
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_DecalManager
+  - hash:
+      serializedVersion: 2
+      Hash: da7eb49bbc1bb89ec149f74de2f814d6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Shell
+  - hash:
+      serializedVersion: 2
+      Hash: fb5643967992bdc2fb228954045bd3f2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_UnitType
+  - hash:
+      serializedVersion: 2
+      Hash: 05766f7141612b0327f54697c8abebcc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_CustomType
+  - hash:
+      serializedVersion: 2
+      Hash: 68d96b2a0a8f40bb9d10a419c617b78c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SpawnPoint
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Billboard
+  - hash:
+      serializedVersion: 2
+      Hash: a3f8036f908c220c6e8b651c8f06abd5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SimpleAITurret
+  - hash:
+      serializedVersion: 2
+      Hash: 78d2b64f9db5ce0d5c89db25c61f3ffa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPPlayerDamageHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 82e89eeeda6fca4b00dc822e065c973c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_RigidbodyImpulse
+  - hash:
+      serializedVersion: 2
+      Hash: 728b5797a6d2b70422f5a4a4ebc66259
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlayerFootFXHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 62fc80631087f32b18ba99575e4d4f64
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPWeaponMeleeAttack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_ParticleFXPooler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_FPPlayerEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: e363e5be22d5cdf59773127f16cc6a1c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlayerInventory
+  - hash:
+      serializedVersion: 2
+      Hash: 803e9f07c728193df6b2bf9f35329945
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SurfaceType
+  - hash:
+      serializedVersion: 2
+      Hash: 18a9e95ded6cd1a211fed8ce23f64a26
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SecurityCamTurret
+  - hash:
+      serializedVersion: 2
+      Hash: ec072799f0ee7d6c5a37b734bfa0c33d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_ItemGrab
+  - hash:
+      serializedVersion: 2
+      Hash: 2e1626e19f4d50785305b1971e208ec7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PoolManager
+  - hash:
+      serializedVersion: 2
+      Hash: d44c3f259328582d633a89c2bad093db
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Gizmo
+  - hash:
+      serializedVersion: 2
+      Hash: fee66a3bfba011f5dfde1f52d7992cc5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Component
+  - hash:
+      serializedVersion: 2
+      Hash: e8b04445cb27456a780442ebe65a3c92
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SimpleCrosshair
+  - hash:
+      serializedVersion: 2
+      Hash: 05ace07d6c5e3a0e52a3a6874245dbe8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_RandomSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: b727bf50b0d5321e39c4da154b6a421a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SimpleHUD
+  - hash:
+      serializedVersion: 2
+      Hash: bb8eca4e5c957fa278d076ba1ae6fea3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Bullet
+  - hash:
+      serializedVersion: 2
+      Hash: ff7f019f10b6a3bab32425bf8fa1b031
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Grab
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_PlayerEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: a9aa947ca6f1ce774acee1c430a41805
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Climb
+  - hash:
+      serializedVersion: 2
+      Hash: 318119f2ae138a61c5558efcd46c340e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_SlomoPowerup
+  - hash:
+      serializedVersion: 2
+      Hash: d640911664151066f2d7a1c36c79942b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_WeaponShooter
+  - hash:
+      serializedVersion: 2
+      Hash: 961171b2db1ae062fae245c03a7530e5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: vp_Grenade
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_EventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 3dade5773a0c54340d02de3ea994fb31
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_camera_freelook
+  - hash:
+      serializedVersion: 2
+      Hash: 92eeaadadbd369438499b1dd7b608439
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_cockpitmovement
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_multplayerswitch
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: mt_shipbody
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu_StartScreen.unity

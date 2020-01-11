@@ -9,8 +9,8 @@ public class mt_spawnplayer : MonoBehaviour
 
     private void Start() {
 
-    	Vector3 RandomOffset = new Vector3(Random.Range(-2, 2), 0, Random.Range(-2, 2));
+    	Vector3 RandomOffset = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
 
-    	PhotonNetwork.Instantiate(PlayerPrefab.name, Vector3.zero+RandomOffset, Quaternion.identity);
+    	PhotonNetwork.Instantiate("Prefabs/"+PlayerPrefab.name, Vector3.zero+RandomOffset, Quaternion.identity);
     }
 }
