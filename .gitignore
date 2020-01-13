@@ -1,0 +1,56 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
+Elysium2018.sln
+Elysium2018-csharp.sln
+Elysium2018.userprefs
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Assets/VacuumShaders/Advanced Dissolve/RenderPipeline - Standard.unitypackage
+Assets/VacuumShaders/Advanced Dissolve/RenderPipeline - Lightweight.unitypackage
+Assets/VacuumShaders/Advanced Dissolve/RenderPipeline - Lightweight.unitypackage.meta
+Assets/VacuumShaders/Advanced Dissolve/RenderPipeline - Standard.unitypackage.meta
