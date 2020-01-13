@@ -22,9 +22,9 @@ $RECYCLE.BIN/
 # =============== #
 Temp/
 Library/
-Elysium2018.sln
-Elysium2018-csharp.sln
-Elysium2018.userprefs
+MultiplayerTest.sln
+MultiplayerTest-csharp.sln
+MultiplayerTest.userprefs
 
 # =========================
 # Operating System Files
