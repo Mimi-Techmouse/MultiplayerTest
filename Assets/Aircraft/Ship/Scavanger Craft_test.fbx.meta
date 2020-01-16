@@ -3,7 +3,17 @@ guid: b0e87c6616196a749822dda70860a709
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Machines
+    second: {fileID: 2100000, guid: 1cd349ccbe549e54cab67e85bbdebd46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scavanger_Fuselage
+    second: {fileID: 2100000, guid: 44dc7c6f35f777f4987d583e28898cb3, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
