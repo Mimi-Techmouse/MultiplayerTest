@@ -14,8 +14,13 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Station
     second: {fileID: 2100000, guid: 14ac366ebeed2ee469db0f04a3e499c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: indus
+    second: {fileID: 2100000, guid: 32e6bc9c9fb428e42b01a28ec69dd77e, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

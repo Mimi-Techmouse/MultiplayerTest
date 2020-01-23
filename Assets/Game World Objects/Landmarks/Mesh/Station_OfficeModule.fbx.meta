@@ -10,7 +10,7 @@ ModelImporter:
       name: Station
     second: {fileID: 2100000, guid: 14ac366ebeed2ee469db0f04a3e499c9, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

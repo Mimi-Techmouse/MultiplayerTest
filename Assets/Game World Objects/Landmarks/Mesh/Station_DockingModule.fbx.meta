@@ -15,7 +15,7 @@ ModelImporter:
       name: Station_brown
     second: {fileID: 2100000, guid: 06f8c1fc06c44614fb2eb52efc8c879d, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
