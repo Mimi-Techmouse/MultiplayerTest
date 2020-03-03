@@ -6,9 +6,12 @@ using Photon.Pun;
 
 public class mt_fireweapon : MonoBehaviour {
 
-	public float firingDelay = 1.0f; //defaults to firing 1/second
 	public string bulletName = "";
+	public Transform firingPoint = null;
 	protected float lastFired = 0.0f;
+	protected mt_weaponhandler Handler = null;
+
+	protected mt_bulletfly lastBullet;
 
     protected vp_FPPlayerEventHandler m_PlayerPlane = null;
     public vp_FPPlayerEventHandler PlayerPlane
@@ -32,49 +35,37 @@ public class mt_fireweapon : MonoBehaviour {
         }
     } 
 
-    // Update is called once per frame
-    void Update() {
+    protected Animator m_anim = null;
+    public Animator AnimationController
+    {
+        get
+        {
+            if (m_anim == null)
+                m_anim = GetComponent<Animator>();
+            return m_anim;
+        }
+    } 
 
-    	if (PlayerPlane.Attack.Active) {
-    		Debug.Log("attacking!");
+    public void SetHandler(mt_weaponhandler h) {
+    	Handler = h;
+    }
 
-    		if (Time.time-lastFired > firingDelay) {
-    			SpawnProjectile();
-    		}
-    	}
-        
+    public Vector3 GetTargetLocation() {
+
+    	return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*100));
+
     }
 
     public void SpawnProjectile() {
 
+    	if (Handler == null)
+    		return;	
+
     	Debug.Log("spawning projectile");
 
-    	lastFired = Time.time;
-
-    	PhotonNetwork.Instantiate("Prefabs/"+bulletName, transform.position, Quaternion.identity);
-
-    }
-
-    /// <summary>
-    /// registers this component with the event handler (if any)
-    /// </summary>
-    protected virtual void OnEnable()
-    {
-
-        if (PlayerPlane != null)
-            PlayerPlane.Register(this);
-
-    }
-
-
-    /// <summary>
-    /// unregisters this component from the event handler (if any)
-    /// </summary>
-    protected virtual void OnDisable()
-    {
-
-        if (PlayerPlane != null)
-            PlayerPlane.Unregister(this);
+    	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
+    	lastBullet = oBullet.GetComponent<mt_bulletfly>();
+    	lastBullet.SetTarget(GetTargetLocation());
 
     }
 }
