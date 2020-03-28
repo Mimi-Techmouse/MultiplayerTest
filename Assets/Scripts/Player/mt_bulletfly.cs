@@ -6,6 +6,8 @@ public class mt_bulletfly : MonoBehaviour
 {
     public float speed = 10.0f;
     public Vector3 target;
+    public vp_StateEventHandler Firer = null;
+    public float myDamage = 5.0f;
 
     public void Update() {
 
@@ -28,5 +30,19 @@ public class mt_bulletfly : MonoBehaviour
 
     	target = pos;
 
+    }
+
+
+    public void SetFirer(vp_StateEventHandler handler) {
+
+        Firer = handler;
+
+    }
+
+    public void OnTriggerEnter(Collider other) {
+        
+        Debug.Log("trigger entered!");
+        other.gameObject.SendMessage ("ApplyDamage", myDamage, SendMessageOptions.DontRequireReceiver);
+        vp_Utility.Destroy(gameObject);
     }
 }

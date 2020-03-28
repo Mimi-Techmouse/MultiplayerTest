@@ -103,15 +103,15 @@ public class mt_camera_freelook: vp_Component {
 	public bool MuteGroundStomps;
 
 	// event handler property cast as a playereventhandler
-	vp_FPPlayerEventHandler m_Player = null;
-	vp_FPPlayerEventHandler Player
+	mt_PlayerEventHandler m_Player = null;
+	mt_PlayerEventHandler Player
 	{
 		get
 		{
 			if (m_Player == null)
 			{
 				if (EventHandler != null)
-					m_Player = (vp_FPPlayerEventHandler)EventHandler;
+					m_Player = (mt_PlayerEventHandler)EventHandler;
 			}
 			return m_Player;
 		}
@@ -1200,7 +1200,7 @@ public class mt_camera_freelook: vp_Component {
 	/// <summary>
 	/// gets or sets the rotation of the camera
 	/// </summary>
-	protected virtual Vector2 OnValue_Rotation
+	protected virtual Vector2 OnValue_CameraRotation
 	{
 		get
 		{
@@ -1263,17 +1263,6 @@ public class mt_camera_freelook: vp_Component {
 		{
 			return true;
 		}
-	}
-
-
-	/// <summary>
-	/// toggles camera view between 1st and 3rd person mode
-	/// </summary>
-	protected virtual void OnMessage_CameraToggle3rdPerson()
-	{
-
-		m_Player.IsFirstPerson.Set(!m_Player.IsFirstPerson.Get());
-
 	}
 
 }

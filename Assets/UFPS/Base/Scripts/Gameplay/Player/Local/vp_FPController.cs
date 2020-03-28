@@ -323,7 +323,7 @@ public class vp_FPController : vp_CharacterController
 
 		// convert input to forces in the motor
 		m_MotorThrottle += Player.InputMoveVector.Get().y * (Transform.TransformDirection(
-			Transform.InverseTransformDirection(((vp_FPPlayerEventHandler)Player).CameraLookDirection.Get()) *
+			Transform.InverseTransformDirection(((mt_PlayerEventHandler)Player).CameraLookDirection.Get()) *
 			(MotorAcceleration * 0.1f)));
 		m_MotorThrottle += Player.InputMoveVector.Get().x * (Transform.TransformDirection(
 			Vector3.right *
@@ -519,8 +519,9 @@ public class vp_FPController : vp_CharacterController
 		// detect whether the slide variables have changed, and broadcast
 		// messages so external components can update accordingly
 
-		if (wasSliding != m_Slide)
-			Player.SetState("Slide", m_Slide);
+		//Removing Slide because we don't need it for this movement set
+		//if (wasSliding != m_Slide)
+		//	Player.SetState("Slide", m_Slide);
 
 	}
 

@@ -197,7 +197,7 @@ public class mt_lobbyhandling : MonoBehaviour, IChatClientListener {
 				continue;
 
 			string msg = senders[i] + ": " + messages[i];
-			if (messages[i] != "")
+			if (sMessage != "")
 				AddMessage(msg);
 		}
 

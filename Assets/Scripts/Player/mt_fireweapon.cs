@@ -66,6 +66,7 @@ public class mt_fireweapon : MonoBehaviour {
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
     	lastBullet = oBullet.GetComponent<mt_bulletfly>();
     	lastBullet.SetTarget(GetTargetLocation());
+        lastBullet.SetFirer(PlayerPlane);
 
     }
 }

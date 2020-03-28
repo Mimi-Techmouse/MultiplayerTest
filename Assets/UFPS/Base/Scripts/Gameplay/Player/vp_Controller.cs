@@ -96,15 +96,15 @@ public abstract class vp_Controller : vp_Component
 
 
 	// event handler property cast as a playereventhandler
-	private vp_PlayerEventHandler m_Player = null;
-	protected vp_PlayerEventHandler Player
+	private mt_PlayerEventHandler m_Player = null;
+	protected mt_PlayerEventHandler Player
 	{
 		get
 		{
 			if (m_Player == null)
 			{
 				if (EventHandler != null)
-					m_Player = (vp_PlayerEventHandler)EventHandler;
+					m_Player = (mt_PlayerEventHandler)EventHandler;
 				if (m_Player == null)
 					Debug.LogError("Error (" + this + ") This component requires a " + ((this is vp_FPController) ? "vp_FPPlayerEventHandler" : "vp_PlayerEventHandler") + " component!");
 			}
@@ -422,8 +422,8 @@ public abstract class vp_Controller : vp_Component
 	{
 
 		// if climbing, abort any ongoing fall
-		if (Player.Climb.Active)
-			m_FallStartHeight = NOFALL;
+		//if (Player.Climb.Active)
+		//	m_FallStartHeight = NOFALL;
 
 		m_FallImpact = 0.0f;
 		m_OnNewGround = false;

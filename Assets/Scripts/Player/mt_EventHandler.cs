@@ -14,27 +14,7 @@
 using System;
 using UnityEngine;
 
-public class mt_EventHandler : vp_StateEventHandler
-{
-
-    // these declarations determine which events are supported by the
-    // player event handler. it is then up to external classes to fill
-    // them up with delegates for communication.
-
-    // TIPS:
-    //  1) mouse-over on the event types (e.g. vp_Message) for usage info.
-    //  2) to find the places where an event is SENT, you can do 'Find All
-    // References' on the event in your IDE. if this is not available, you
-    // can search the project for the event name preceded by '.' (.Reload)
-    //  3) to find the methods that LISTEN to an event, search the project
-    // for its name preceded by '_' (_Reload)
-
-    //Camera
-    public vp_Value<bool> IsFirstPerson;
-    public vp_Value<Vector2> InputSmoothLook;
-    public vp_Activity<Vector3> CameraEarthQuake;
-    public vp_Value<Vector3> LookPoint;
-    public vp_Value<Vector3> CameraEarthQuakeForce;
+public class mt_EventHandler : vp_StateEventHandler {
 
     // health
     public vp_Value<float> Health;
@@ -47,7 +27,6 @@ public class mt_EventHandler : vp_StateEventHandler
     public vp_Value<float> Pitch;
     public vp_Value<float> Roll;
     public vp_Value<float> Yaw;
-    public vp_Value<bool> Pause;
 
     // activities
     public vp_Activity Dead;
@@ -59,6 +38,7 @@ public class mt_EventHandler : vp_StateEventHandler
     // interaction
     public vp_Value<vp_Interactable> Interactable;
     public vp_Value<bool> CanInteract;
+    public vp_Message<float> DamageMe;
 
 
     /// <summary>
@@ -74,7 +54,6 @@ public class mt_EventHandler : vp_StateEventHandler
         BindStateToActivity(Fly);
         BindStateToActivity(Interact);
         BindStateToActivity(Zoom);
-        BindStateToActivity(CameraEarthQuake);
 
     }
 

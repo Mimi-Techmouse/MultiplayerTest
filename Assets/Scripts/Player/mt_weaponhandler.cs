@@ -13,13 +13,13 @@ public class mt_weaponhandler : MonoBehaviour {
 
 	public GameObject[] InstantiatedWeapons;
 
-    protected vp_FPPlayerEventHandler m_PlayerPlane = null;
-    public vp_FPPlayerEventHandler PlayerPlane
+    protected mt_EventHandler m_PlayerPlane = null;
+    public mt_EventHandler PlayerPlane
     {
         get
         {
             if (m_PlayerPlane == null)
-                m_PlayerPlane = transform.root.GetComponent<vp_FPPlayerEventHandler>();
+                m_PlayerPlane = transform.root.GetComponent<mt_EventHandler>();
             return m_PlayerPlane;
         }
     }
@@ -40,7 +40,7 @@ public class mt_weaponhandler : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    protected virtual void OnStart_Attack() {
+    protected virtual void OnStart_MainAttack() {
 
     	foreach (GameObject weapon in InstantiatedWeapons) {
 
@@ -55,7 +55,7 @@ public class mt_weaponhandler : MonoBehaviour {
     /// <summary>
     /// 
     /// </summary>
-    protected virtual void OnStop_Attack() {
+    protected virtual void OnStop_MainAttack() {
 
     	foreach (GameObject weapon in InstantiatedWeapons) {
 
