@@ -359,8 +359,6 @@ public class mt_playerinput : vp_Component
 		m_MouseLookSmoothMove.x = vp_Input.GetAxisRaw("Mouse X") * Time.timeScale;
 		m_MouseLookSmoothMove.y = vp_Input.GetAxisRaw("Mouse Y") * Time.timeScale;
 
-		Debug.Log(m_MouseLookSmoothMove);
-
 		// --- mouse smoothing ---
 
 		// make sure the defined smoothing vars are within range
