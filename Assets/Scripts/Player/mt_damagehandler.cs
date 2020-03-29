@@ -37,4 +37,13 @@ public class mt_damagehandler : MonoBehaviour {
 		Handler.DamageMe.Send (dam.DamageAmount);
         
 	}
+
+
+    public void OnTriggerEnter(Collider other) {
+    	Debug.Log("something hit my trigger!");
+    }
+
+    public void OnCollisionEnter(Collision collision) {
+    	Debug.Log("something collided with meeee!");
+    }
 }

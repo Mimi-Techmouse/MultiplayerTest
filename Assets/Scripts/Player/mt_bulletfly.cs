@@ -41,8 +41,13 @@ public class mt_bulletfly : MonoBehaviour
 
     public void OnTriggerEnter(Collider other) {
         
-        Debug.Log("trigger entered!");
+        Debug.Log(this.name+" trigger entered!");
         other.gameObject.SendMessage ("ApplyDamage", myDamage, SendMessageOptions.DontRequireReceiver);
         vp_Utility.Destroy(gameObject);
+
+    }
+
+    public void OnCollisionEnter(Collision collision) {
+        Debug.Log(this.name+" collider entered!");
     }
 }

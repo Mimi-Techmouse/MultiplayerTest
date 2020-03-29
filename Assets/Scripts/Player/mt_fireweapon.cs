@@ -61,7 +61,7 @@ public class mt_fireweapon : MonoBehaviour {
     	if (Handler == null)
     		return;	
 
-    	Debug.Log("spawning projectile");
+    	//Debug.Log("spawning projectile");
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
     	lastBullet = oBullet.GetComponent<mt_bulletfly>();
