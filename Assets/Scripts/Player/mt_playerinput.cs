@@ -95,6 +95,9 @@ public class mt_playerinput : vp_Component
 		InputJump();
 		InputCrouch();
 
+		//Yay rolling!
+		InputRoll();
+
 		// manage input for weapons
 		InputAttack();
 
@@ -126,6 +129,21 @@ public class mt_playerinput : vp_Component
 		// tweaking in order not to feel laggy
 
 		Player.InputMoveVector.Set(new Vector2(vp_Input.GetAxisRaw("Horizontal"), vp_Input.GetAxisRaw("Vertical")));
+
+	}
+
+	/// <summary>
+	/// Input the roll right / roll left thing
+	/// </summary>
+	protected virtual void InputRoll() {
+
+		if (vp_Input.GetButton("RollRight")) {
+			Debug.Log("Roll right");
+			Player.RollPlane.Send(-1.0f);
+		} else if (vp_Input.GetButton("RollLeft")) {
+			Debug.Log("Roll left");
+			Player.RollPlane.Send(1.0f);
+		}
 
 	}
 
@@ -320,20 +338,19 @@ public class mt_playerinput : vp_Component
 		if (m_LastMouseLookFrame == Time.frameCount)
 			return m_CurrentMouseLook;
 
-// NOTE: this directive addresses an issue with bluetooth gamepads
-// when developing for GearVR. please report if it causes any trouble
-#if (!UNITY_ANDROID || (UNITY_ANDROID && UNITY_EDITOR))
+		// NOTE: this directive addresses an issue with bluetooth gamepads
+		// when developing for GearVR. please report if it causes any trouble
+		#if (!UNITY_ANDROID || (UNITY_ANDROID && UNITY_EDITOR))
 
-		// don't allow mouselook if we are using the mouse cursor
-		if (MouseCursorBlocksMouseLook && !vp_Utility.LockCursor)
-			return Vector2.zero;
+			// don't allow mouselook if we are using the mouse cursor
+			if (MouseCursorBlocksMouseLook && !vp_Utility.LockCursor)
+				return Vector2.zero;
 
-		// only recalculate mouselook once per frame or smoothing will break
-		if (m_LastMouseLookFrame == Time.frameCount)
-			return m_CurrentMouseLook;
+			// only recalculate mouselook once per frame or smoothing will break
+			if (m_LastMouseLookFrame == Time.frameCount)
+				return m_CurrentMouseLook;
 
-#endif
-
+		#endif
 
 		m_LastMouseLookFrame = Time.frameCount;
 
@@ -341,6 +358,8 @@ public class mt_playerinput : vp_Component
 
 		m_MouseLookSmoothMove.x = vp_Input.GetAxisRaw("Mouse X") * Time.timeScale;
 		m_MouseLookSmoothMove.y = vp_Input.GetAxisRaw("Mouse Y") * Time.timeScale;
+
+		Debug.Log(m_MouseLookSmoothMove);
 
 		// --- mouse smoothing ---
 
@@ -400,15 +419,15 @@ public class mt_playerinput : vp_Component
 	protected virtual Vector2 GetMouseLookRaw()
 	{
 
-// TEST: this directive addresses an issue with bluetooth gamepads.
-// please report if it causes any trouble
-#if ((!UNITY_ANDROID && !UNITY_IOS) || (UNITY_ANDROID && UNITY_EDITOR) || (UNITY_IOS && UNITY_EDITOR))
+		// TEST: this directive addresses an issue with bluetooth gamepads.
+		// please report if it causes any trouble
+		#if ((!UNITY_ANDROID && !UNITY_IOS) || (UNITY_ANDROID && UNITY_EDITOR) || (UNITY_IOS && UNITY_EDITOR))
 
-		// block mouselook when using the mouse cursor
-		if (MouseCursorBlocksMouseLook && !vp_Utility.LockCursor)
-			return Vector2.zero;
+			// block mouselook when using the mouse cursor
+			if (MouseCursorBlocksMouseLook && !vp_Utility.LockCursor)
+				return Vector2.zero;
 
-#endif
+		#endif
 
 		m_MouseLookRawMove.x = vp_Input.GetAxisRaw("Mouse X");
 		m_MouseLookRawMove.y = vp_Input.GetAxisRaw("Mouse Y");

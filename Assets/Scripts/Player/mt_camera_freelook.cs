@@ -51,6 +51,7 @@ public class mt_camera_freelook: vp_Component {
 	public Vector3 LookPoint = Vector3.zero;
 	protected float m_Pitch = 0.0f;
 	protected float m_Yaw = 0.0f;
+	protected float m_Roll = 0.0f;
 	protected vp_Spring m_RotationSpring = null;
 	protected RaycastHit m_LookPointHit;
 
@@ -253,17 +254,17 @@ public class mt_camera_freelook: vp_Component {
 		m_RotationSpring = new vp_Spring(Transform, vp_Spring.UpdateMode.RotationAdditiveLocal, false);
 		m_RotationSpring.MinVelocity = 0.0f;
 
-#if UNITY_EDITOR
-#if UNITY_5_3 || UNITY_5_4 || UNITY_5_5 || UNITY_5_6 || UNITY_2017_1
-        if (DisableVRModeOnStartup && UnityEngine.VR.VRSettings.enabled) {
-            UnityEngine.VR.VRSettings.enabled = false;
-        }
-#else
-        if (DisableVRModeOnStartup && UnityEngine.XR.XRSettings.enabled) {
-            UnityEngine.XR.XRSettings.enabled = false;
-        }
-#endif
-#endif
+		#if UNITY_EDITOR
+		#if UNITY_5_3 || UNITY_5_4 || UNITY_5_5 || UNITY_5_6 || UNITY_2017_1
+		    if (DisableVRModeOnStartup && UnityEngine.VR.VRSettings.enabled) {
+		        UnityEngine.VR.VRSettings.enabled = false;
+		    }
+		#else
+		    if (DisableVRModeOnStartup && UnityEngine.XR.XRSettings.enabled) {
+		         UnityEngine.XR.XRSettings.enabled = false;
+		    }
+		#endif
+		#endif
 
     }
 
@@ -398,17 +399,15 @@ public class mt_camera_freelook: vp_Component {
 		// NOTE: this rotation does not pitch the player model, it only applies yaw
 		Quaternion xQuaternion = Quaternion.AngleAxis(m_Yaw, Vector3.up);
 		Quaternion yQuaternion = Quaternion.AngleAxis(0, Vector3.left);
-		Parent.rotation =
-			vp_MathUtility.NaNSafeQuaternion((xQuaternion * yQuaternion), Parent.rotation);
+		Quaternion zQuaternion = Quaternion.AngleAxis(m_Roll, Vector3.forward);
+		Parent.rotation = vp_MathUtility.NaNSafeQuaternion((zQuaternion * xQuaternion * yQuaternion), Parent.rotation);
 
-		// pitch and yaw the camera
+		// pitch and yaw and roll the camera
 		yQuaternion = Quaternion.AngleAxis(-m_Pitch, Vector3.left);
-		Transform.rotation =
-			vp_MathUtility.NaNSafeQuaternion((xQuaternion * yQuaternion), Transform.rotation);
+		Transform.rotation = vp_MathUtility.NaNSafeQuaternion((zQuaternion * xQuaternion * yQuaternion), Transform.rotation);
 
 		// roll the camera
-		Transform.localEulerAngles +=
-			vp_MathUtility.NaNSafeVector3(Vector3.forward * m_RotationSpring.State.z);
+		//Transform.localEulerAngles += vp_MathUtility.NaNSafeVector3(Vector3.forward * m_RotationSpring.State.z);
 
 		// third person
 		Update3rdPerson();
@@ -1107,6 +1106,17 @@ public class mt_camera_freelook: vp_Component {
 			float roll = Random.value > 0.5f ? (rotImpact * 2) : -(rotImpact * 2);
 			m_RotationSpring.AddSoftForce(Vector3.forward * roll, RotationKneelingSoftness);
 		}
+
+	}
+
+	/// <summary>
+	/// applies a force to the camera rotation spring (intended
+	/// for when the controller bumps into objects above it)
+	/// </summary>
+	protected virtual void OnMessage_RollPlane(float impact) {
+
+		Debug.Log("rolling "+impact);
+		m_Roll += impact;
 
 	}
 

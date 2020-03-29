@@ -28,7 +28,8 @@ public class mt_PlayerEventHandler : mt_EventHandler {
 	public vp_Value<float> Height;
 	public vp_Value<float> FallSpeed;
 	public vp_Message<float> FallImpact;
-	public vp_Message<float> HeadImpact;
+	public vp_Message<float> HeadImpact; //old roll, remove at some point
+    public vp_Message<float> RollPlane;
 	public vp_Message<Vector3> ForceImpact;
 	public vp_Message Stop;
 	public vp_Value<Transform> Platform;
