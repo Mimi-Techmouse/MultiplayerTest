@@ -72,7 +72,7 @@ public class mt_obstruction : MonoBehaviour {
         dir = -dir.normalized;
         other.gameObject.GetComponent<Rigidbody>().AddForce(dir*force);
 
-        if (other.transform.parent.gameObject != null)
+        if (other.transform.parent != null)
         	CollideWithOther(other.transform.parent.gameObject);
         else
         	CollideWithOther(other.gameObject);
