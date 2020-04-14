@@ -12,6 +12,8 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     public int KillCount = 0;
 
+    protected int receivedHealth = 100;
+
     protected mt_EventHandler m_PlayerPlane = null;
     public mt_EventHandler PlayerPlane
     {
@@ -107,7 +109,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 		{
 		    // Network player, receive data
 		    int newHealth = (int)stream.ReceiveNext();
-		    PlayerPlane.Health.Set(newHealth); //make sure death is registered properly by running this through default stuff
+		    this.OnValue_Health.Set(newHealth); //make sure death is registered properly by running this through default stuff
 		}
     }
     #endregion
