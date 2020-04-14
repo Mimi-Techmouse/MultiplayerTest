@@ -39,6 +39,7 @@ public class mt_EventHandler : vp_StateEventHandler {
     public vp_Value<vp_Interactable> Interactable;
     public vp_Value<bool> CanInteract;
     public vp_Message<int> DamageMe;
+    public vp_Value<bool> isLocalPlayer;
 
 
     /// <summary>

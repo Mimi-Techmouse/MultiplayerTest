@@ -79,6 +79,8 @@ public class mt_playerinput : vp_Component
 	/// </summary>
 	protected override void Update()
 	{
+		if (!Player.isLocalPlayer.Get()) 
+			return;
 		
 		// manage input for GUI
 		UpdateCursorLock();

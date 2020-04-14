@@ -52,7 +52,10 @@ public class mt_obstruction : MonoBehaviour {
 
         Debug.Log(other.transform.parent.name+" trigger entered!");
 
-        CollideWithOther(other.transform.parent.gameObject);
+        if (other.transform.parent.gameObject != null)
+        	CollideWithOther(other.transform.parent.gameObject);
+        else
+        	CollideWithOther(other.gameObject);
 
     }
 
@@ -69,7 +72,10 @@ public class mt_obstruction : MonoBehaviour {
         dir = -dir.normalized;
         other.gameObject.GetComponent<Rigidbody>().AddForce(dir*force);
 
-        CollideWithOther(other.transform.parent.gameObject);
+        if (other.transform.parent.gameObject != null)
+        	CollideWithOther(other.transform.parent.gameObject);
+        else
+        	CollideWithOther(other.gameObject);
 
     }
 

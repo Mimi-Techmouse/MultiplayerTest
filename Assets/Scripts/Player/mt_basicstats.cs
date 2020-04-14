@@ -46,6 +46,12 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	}
     }
 
+    protected virtual bool OnValue_isLocalPlayer {
+    	get {
+    		return PlayerOwned;
+    	}
+    }
+
     /// <summary>
     /// Apply Damage to current health
     /// </summary>
