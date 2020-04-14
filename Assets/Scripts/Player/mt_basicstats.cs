@@ -12,6 +12,8 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     public int KillCount = 0;
 
+    public bool PlayerOwned = false;
+
     protected mt_EventHandler m_PlayerPlane = null;
     public mt_EventHandler PlayerPlane
     {
@@ -24,7 +26,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     protected virtual void Update() {
-		if (!photonView.IsMine) {
+		if (!PlayerOwned) {
 			PlayerPlane.Health.Set(currentHealth); //run it through standard computations because otherwise we won't get death
 		}
     }

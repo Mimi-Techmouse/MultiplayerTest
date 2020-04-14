@@ -37,6 +37,7 @@ public class mt_multplayerswitch : MonoBehaviourPun
 		if (photonView.IsMine) {
 			Cockpit.SetActive(true);
 			ShipBody.SetActive(false);
+            GetComponent<mt_basicstats>().PlayerOwned = true;
 		} else {
 			Cockpit.SetActive(false);
 			ShipBody.SetActive(true);

@@ -63,13 +63,10 @@ public class mt_bulletfly : MonoBehaviour
     public void OnCollisionEnter(Collision other) {
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
-            Debug.Log("you just hit another bullet");
             return;
         } if (Firer == null)  {
-            Debug.Log("you don't have a Firer yet");
             return;
         } if (Firer.gameObject == other.gameObject) {
-            Debug.Log("you hit yourself!");
             return;
         }
 
