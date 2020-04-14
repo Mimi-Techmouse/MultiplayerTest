@@ -12,8 +12,6 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     public int KillCount = 0;
 
-    protected int receivedHealth = 100;
-
     protected mt_EventHandler m_PlayerPlane = null;
     public mt_EventHandler PlayerPlane
     {
@@ -23,6 +21,12 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
                 m_PlayerPlane = transform.GetComponent<mt_EventHandler>();
             return m_PlayerPlane;
         }
+    }
+
+    protected virtual void Update() {
+		if (!photonView.IsMine) {
+			PlayerPlane.Health.Set(currentHealth); //run it through standard computations because otherwise we won't get death
+		}
     }
 
     /// <summary>
@@ -96,10 +100,6 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
-    public void SetHealth(int newHealth) {
-    	PlayerPlane.Health.Set(newHealth);
-    }
-
     /// <summary>
     /// Networking section!
     /// </summary>
@@ -108,12 +108,13 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	if (stream.IsWriting) {
 		    // We own this player: send the others our data
 		    stream.SendNext(currentHealth);
+		    stream.SendNext(KillCount);
 		}
 		else
 		{
 		    // Network player, receive data
-		    int newHealth = (int)stream.ReceiveNext();
-		    this.SetHealth(newHealth); //make sure death is registered properly by running this through default stuff
+		    this.currentHealth = (int)stream.ReceiveNext();
+		    this.KillCount = (int)stream.ReceiveNext();
 		}
     }
     #endregion
