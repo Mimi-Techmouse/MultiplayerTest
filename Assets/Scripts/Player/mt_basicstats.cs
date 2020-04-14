@@ -58,7 +58,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     protected virtual void OnStart_Dead() {
     	Debug.Log(transform.name+" should be deeeeeead");
 
-    	GameObject myExplosion = PhotonNetwork.Instantiate("Prefabs/VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
+    	GameObject myExplosion = PhotonNetwork.Instantiate("VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
     	vp_Timer.In(2.0f, () => { vp_Utility.Destroy(myExplosion); });
     }
 
@@ -96,6 +96,10 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     }
 
+    public void SetHealth(int newHealth) {
+    	PlayerPlane.Health.Set(newHealth);
+    }
+
     /// <summary>
     /// Networking section!
     /// </summary>
@@ -109,7 +113,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 		{
 		    // Network player, receive data
 		    int newHealth = (int)stream.ReceiveNext();
-		    this.OnValue_Health.Set(newHealth); //make sure death is registered properly by running this through default stuff
+		    this.SetHealth(newHealth); //make sure death is registered properly by running this through default stuff
 		}
     }
     #endregion
