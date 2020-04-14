@@ -17,7 +17,7 @@ using UnityEngine;
 public class mt_EventHandler : vp_StateEventHandler {
 
     // health
-    public vp_Value<float> Health;
+    public vp_Value<int> Health;
 
     // position and rotation
     public vp_Value<Vector3> Position;      // Plane Position
@@ -38,7 +38,7 @@ public class mt_EventHandler : vp_StateEventHandler {
     // interaction
     public vp_Value<vp_Interactable> Interactable;
     public vp_Value<bool> CanInteract;
-    public vp_Message<float> DamageMe;
+    public vp_Message<int> DamageMe;
 
 
     /// <summary>

@@ -239,12 +239,11 @@ public class mt_playerinput : vp_Component
 		if (!vp_Utility.LockCursor)
 			return;
 
-		if (vp_Input.GetButton("Attack")
-			  || vp_Input.GetAxisRaw("RightTrigger") > 0.5f		// fire using the right gamepad trigger
-			)
+		if (vp_Input.GetButton("Attack")) {
 			Player.MainAttack.TryStart();
-		else
-			Player.MainAttack.TryStop();
+		} else {
+			Player.MainAttack.Stop();
+		}
 
 	}
 
@@ -478,14 +477,11 @@ public class mt_playerinput : vp_Component
 
 
 	/// <summary>
-	/// allows or prevents first person gameplay input. NOTE:
-	/// gui (menu) input is still allowed
+	/// Lock off input once you are dead
 	/// </summary>
-	protected virtual bool OnValue_InputAllowGameplay
-	{
-		get { return m_AllowGameplayInput; }
-		set { m_AllowGameplayInput = value; }
-	}
+    protected virtual void OnStart_Dead() {
+    	m_AllowGameplayInput = false;
+    }
 
 
 	/// <summary>

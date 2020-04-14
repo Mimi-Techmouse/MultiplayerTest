@@ -13,13 +13,13 @@ public class mt_fireweapon : MonoBehaviour {
 
 	protected mt_bulletfly lastBullet;
 
-    protected vp_FPPlayerEventHandler m_PlayerPlane = null;
-    public vp_FPPlayerEventHandler PlayerPlane
+    public mt_EventHandler m_PlayerPlane = null;
+    public mt_EventHandler PlayerPlane
     {
         get
         {
             if (m_PlayerPlane == null)
-                m_PlayerPlane = transform.root.GetComponent<vp_FPPlayerEventHandler>();
+                m_PlayerPlane = Handler.GetComponent<mt_EventHandler>();
             return m_PlayerPlane;
         }
     }
@@ -65,8 +65,8 @@ public class mt_fireweapon : MonoBehaviour {
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
     	lastBullet = oBullet.GetComponent<mt_bulletfly>();
-    	lastBullet.SetTarget(GetTargetLocation());
         lastBullet.SetFirer(PlayerPlane);
+        lastBullet.SetTarget(GetTargetLocation());
 
     }
 }

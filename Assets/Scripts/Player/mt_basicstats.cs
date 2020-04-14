@@ -1,0 +1,114 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using Photon.Pun;
+
+//This script is observable, so that we always sync health and such
+public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
+{
+    public int maxHealth = 100;
+    public int currentHealth = 100;
+
+    public int KillCount = 0;
+
+    protected mt_EventHandler m_PlayerPlane = null;
+    public mt_EventHandler PlayerPlane
+    {
+        get
+        {
+            if (m_PlayerPlane == null)
+                m_PlayerPlane = transform.GetComponent<mt_EventHandler>();
+            return m_PlayerPlane;
+        }
+    }
+
+    /// <summary>
+    /// Return how much health is currently available
+    /// </summary>
+    protected virtual int OnValue_Health {
+    	get {
+    		return currentHealth;
+    	} set {
+    		currentHealth = value;
+    		if (currentHealth <= 0) {
+    			currentHealth = 0;
+    			PlayerPlane.Dead.Start();
+    		}
+    	}
+    }
+
+    /// <summary>
+    /// Apply Damage to current health
+    /// </summary>
+    protected virtual void OnMessage_DamageMe(int damageAmount) {
+
+    	Debug.Log("message recieved: "+damageAmount);
+
+    	int myHealth = PlayerPlane.Health.Get();
+    	PlayerPlane.Health.Set(myHealth-damageAmount);
+    }
+
+
+    /// <summary>
+    /// For when you die
+    /// </summary>
+    protected virtual void OnStart_Dead() {
+    	Debug.Log(transform.name+" should be deeeeeead");
+
+    	GameObject myExplosion = PhotonNetwork.Instantiate("Prefabs/VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
+    	vp_Timer.In(2.0f, () => { vp_Utility.Destroy(myExplosion); });
+    }
+
+
+    /// <summary>
+    /// Handles the kill counter
+    /// </summary>
+    public virtual void KilledSomething() {
+    	Debug.Log(transform.name+" has killed something!");
+    	KillCount++;
+    }
+
+    /// <summary>
+    /// registers this component with the event handler (if any)
+    /// </summary>
+    public override void OnEnable()
+    {
+    	base.OnEnable();
+
+        if (PlayerPlane != null)
+            PlayerPlane.Register(this);
+
+    }
+
+
+    /// <summary>
+    /// unregisters this component from the event handler (if any)
+    /// </summary>
+    public override void OnDisable()
+    {
+    	base.OnDisable();
+
+        if (PlayerPlane != null)
+            PlayerPlane.Unregister(this);
+
+    }
+
+    /// <summary>
+    /// Networking section!
+    /// </summary>
+    #region IPunObservable implementation
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+    	if (stream.IsWriting) {
+		    // We own this player: send the others our data
+		    stream.SendNext(currentHealth);
+		}
+		else
+		{
+		    // Network player, receive data
+		    int newHealth = (int)stream.ReceiveNext();
+		    PlayerPlane.Health.Set(newHealth); //make sure death is registered properly by running this through default stuff
+		}
+    }
+    #endregion
+}

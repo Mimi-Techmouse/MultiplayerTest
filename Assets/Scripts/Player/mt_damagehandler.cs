@@ -26,7 +26,7 @@ public class mt_damagehandler : MonoBehaviour {
 	/// *********************************************************************************** /// 
 	public void ApplyDamage(mt_Constants.Damage dam) {
 
-        Debug.Log(transform.gameObject.name + " says: Ouch");
+        Debug.Log(transform.name + " says: Ouch");
 
 		//Blocks may need proper handlers
 		if ((Handler.Health.Get () - dam.DamageAmount) <= 0) {
@@ -38,12 +38,27 @@ public class mt_damagehandler : MonoBehaviour {
         
 	}
 
+    /// <summary>
+    /// registers this component with the event handler (if any)
+    /// </summary>
+    protected virtual void OnEnable()
+    {
 
-    public void OnTriggerEnter(Collider other) {
-    	Debug.Log("something hit my trigger!");
+        if (Handler != null)
+            Handler.Register(this);
+
     }
 
-    public void OnCollisionEnter(Collision collision) {
-    	Debug.Log("something collided with meeee!");
+
+    /// <summary>
+    /// unregisters this component from the event handler (if any)
+    /// </summary>
+    protected virtual void OnDisable()
+    {
+
+        if (Handler != null)
+            Handler.Unregister(this);
+
     }
+
 }
