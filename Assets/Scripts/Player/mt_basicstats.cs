@@ -46,6 +46,9 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	} set {
             int originalHealth = currentHealth;
     		currentHealth = value;
+
+            Debug.Log(gameObject.name+" health updated to: "+currentHealth);
+
     		if (currentHealth <= 0) {
     			currentHealth = 0;
     			PlayerPlane.Dead.Start();
@@ -67,7 +70,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     /// </summary>
     protected virtual void OnMessage_DamageMe(int damageAmount) {
 
-    	Debug.Log("message recieved: "+damageAmount);
+    	Debug.Log(gameObject.name+" message recieved: "+damageAmount);
 
     	int myHealth = PlayerPlane.Health.Get();
     	PlayerPlane.Health.Set(myHealth-damageAmount);
@@ -123,13 +126,11 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     /// </summary>
     #region IPunObservable implementation
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-    	if (stream.IsWriting) {
+    	if (stream.IsWriting && this.PlayerOwned) {
 		    // We own this player: send the others our data
 		    stream.SendNext(currentHealth);
 		    stream.SendNext(KillCount);
-		}
-		else
-		{
+		} else if (!this.PlayerOwned) {
 		    // Network player, receive data
 		    this.currentHealth = (int)stream.ReceiveNext();
 		    this.KillCount = (int)stream.ReceiveNext();
