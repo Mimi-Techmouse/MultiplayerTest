@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Photon.Pun;
+
 public class mt_bulletfly : MonoBehaviour
 {
     public float speed = 10.0f;
     public Vector3 target;
     public mt_EventHandler Firer = null;
     public int myDamage = 5;
+    public float timeCreated = 0;
+    public int parentViewID = 0;
+
+    public void Awake() {
+        timeCreated = Time.time;
+    }
 
     public void Update() {
 
     	if (Vector3.Distance(transform.position, target) < 1.0f) {
     		vp_Utility.Destroy(gameObject);
     	}
+
+        if (Time.time-timeCreated > 10.0f) {
+            vp_Utility.Destroy(gameObject);
+        }
 
     }
 
@@ -30,9 +42,6 @@ public class mt_bulletfly : MonoBehaviour
 
     	target = pos;
 
-        /*Vector3 dir = (pos - transform.position).normalized;
-        GetComponent<Rigidbody>().AddForce(dir*speed, ForceMode.VelocityChange);*/
-
     }
 
 
@@ -40,6 +49,10 @@ public class mt_bulletfly : MonoBehaviour
 
         Firer = handler;
         Debug.Log("assigning firer: "+handler.name);
+        if (Firer.gameObject.GetComponent<PhotonView>() != null)
+            parentViewID = Firer.gameObject.GetComponent<PhotonView>().ViewID;
+
+        Debug.Log("parent view id: "+parentViewID);
 
     }
 
@@ -50,7 +63,16 @@ public class mt_bulletfly : MonoBehaviour
         } if (Firer == null)  {
             return;
         } if (Firer.gameObject == other.gameObject) {
-            return;
+            if (other.gameObject.GetComponent<PhotonView>() != null) {
+                if (parentViewID == other.gameObject.GetComponent<PhotonView>().ViewID) {
+                    Debug.Log("I hit myself!");
+                    return;
+                } else {
+                    Debug.Log("hit ID: "+other.gameObject.GetComponent<PhotonView>().ViewID);
+                }
+            } else {
+                return;
+            }
         }
 
         Debug.Log(other.gameObject.name+" trigger entered!");
