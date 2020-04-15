@@ -20,8 +20,8 @@ public class mt_bulletfly : MonoBehaviour
     public void LateUpdate() {
 
         // Move our position a step closer to the target.
-        //float step =  speed * Time.deltaTime; // calculate distance to move
-        //transform.position = Vector3.MoveTowards(transform.position, target, step);
+        float step =  speed * Time.deltaTime; // calculate distance to move
+        transform.position = Vector3.MoveTowards(transform.position, target, step);
 
     }
 
@@ -30,8 +30,8 @@ public class mt_bulletfly : MonoBehaviour
 
     	target = pos;
 
-        Vector3 dir = (pos - transform.position).normalized;
-        GetComponent<Rigidbody>().AddForce(dir*speed, ForceMode.VelocityChange);
+        /*Vector3 dir = (pos - transform.position).normalized;
+        GetComponent<Rigidbody>().AddForce(dir*speed, ForceMode.VelocityChange);*/
 
     }
 

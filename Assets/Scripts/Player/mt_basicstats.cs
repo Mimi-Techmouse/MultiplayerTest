@@ -38,11 +38,15 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	get {
     		return currentHealth;
     	} set {
+            int originalHealth = currentHealth;
     		currentHealth = value;
     		if (currentHealth <= 0) {
     			currentHealth = 0;
     			PlayerPlane.Dead.Start();
     		}
+
+            if (originalHealth != currentHealth)
+                PlayerPlane.HealthChanged.Send();
     	}
     }
 
