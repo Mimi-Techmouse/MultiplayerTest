@@ -14,6 +14,8 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool PlayerOwned = false;
 
+    protected int parentViewID = 0;
+
     protected mt_EventHandler m_PlayerPlane = null;
     public mt_EventHandler PlayerPlane
     {
@@ -28,6 +30,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     protected virtual void Awake() {
         if (gameObject.GetComponent<PhotonView>() != null) {
             gameObject.name = "Player: "+gameObject.GetComponent<PhotonView>().ViewID;
+            parentViewID = gameObject.GetComponent<PhotonView>().ViewID;
         }
     }
 
@@ -126,12 +129,17 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     /// </summary>
     #region IPunObservable implementation
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-    	if (stream.IsWriting && this.PlayerOwned) {
+    	if (stream.IsWriting) {
 		    // We own this player: send the others our data
+            stream.SendNext(parentViewID);
 		    stream.SendNext(currentHealth);
 		    stream.SendNext(KillCount);
-		} else if (!this.PlayerOwned) {
+		} else {
 		    // Network player, receive data
+            int sentViewID = (int)stream.ReceiveNext();
+            if (sentViewID != this.parentViewID)
+                return;
+
 		    this.currentHealth = (int)stream.ReceiveNext();
 		    this.KillCount = (int)stream.ReceiveNext();
 		}
