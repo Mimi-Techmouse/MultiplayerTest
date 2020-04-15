@@ -71,6 +71,7 @@ public class mt_bulletfly : MonoBehaviour
                     Debug.Log("hit ID: "+other.gameObject.GetComponent<PhotonView>().ViewID);
                 }
             } else {
+                Debug.Log("Other self doesn't have photon view.");
                 return;
             }
         }
@@ -89,7 +90,17 @@ public class mt_bulletfly : MonoBehaviour
         } if (Firer == null)  {
             return;
         } if (Firer.gameObject == other.gameObject) {
-            return;
+            if (other.gameObject.GetComponent<PhotonView>() != null) {
+                if (parentViewID == other.gameObject.GetComponent<PhotonView>().ViewID) {
+                    Debug.Log("I hit myself!");
+                    return;
+                } else {
+                    Debug.Log("hit ID: "+other.gameObject.GetComponent<PhotonView>().ViewID);
+                }
+            } else {
+                Debug.Log("Other self doesn't have photon view.");
+                return;
+            }
         }
 
         Debug.Log(other.gameObject.name+" collider entered!");
