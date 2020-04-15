@@ -25,6 +25,12 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    protected virtual void Awake() {
+        if (gameObject.GetComponent<PhotonView>() != null) {
+            gameObject.name = "Player: "+gameObject.GetComponent<PhotonView>().ViewID;
+        }
+    }
+
     protected virtual void Update() {
 		if (!PlayerOwned) {
 			PlayerPlane.Health.Set(currentHealth); //run it through standard computations because otherwise we won't get death
