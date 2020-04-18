@@ -95,7 +95,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", myDamage, SendMessageOptions.DontRequireReceiver);
-        vp_Timer.In(0.2f, () => {vp_Utility.Destroy(gameObject);});
+        vp_Timer.In(0.5f, () => {vp_Utility.Destroy(gameObject);});
 
     }
 
@@ -127,7 +127,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", damageToSend, SendMessageOptions.DontRequireReceiver);
-        vp_Timer.In(0.2f, () => {vp_Utility.Destroy(gameObject);});
+        vp_Timer.In(0.5f, () => {vp_Utility.Destroy(gameObject);});
 
     }
 
