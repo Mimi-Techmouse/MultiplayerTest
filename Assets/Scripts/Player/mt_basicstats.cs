@@ -50,7 +50,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
             int originalHealth = currentHealth;
     		currentHealth = value;
 
-            Debug.Log(gameObject.name+" health updated to: "+currentHealth);
+            //Debug.Log(gameObject.name+" health updated to: "+currentHealth);
 
     		if (currentHealth <= 0) {
     			currentHealth = 0;
