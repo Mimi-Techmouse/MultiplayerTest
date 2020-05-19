@@ -21,15 +21,15 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     public void Update() {
 
         if (shouldDie) {
-            vp_Utility.Destroy(gameObject);
+            SafeRemove();
         }
 
     	if (Vector3.Distance(transform.position, target) < 1.0f) {
-    		vp_Utility.Destroy(gameObject);
+    		SafeRemove();
     	}
 
         if (Time.time-timeCreated > 10.0f) {
-            vp_Utility.Destroy(gameObject);
+            SafeRemove();
         }
 
         //This will only happen if you are in fact not the 
@@ -95,7 +95,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", myDamage, SendMessageOptions.DontRequireReceiver);
-        vp_Timer.In(0.5f, () => {vp_Utility.Destroy(gameObject);});
+        vp_Timer.In(0.5f, () => {SafeRemove();});
 
     }
 
@@ -127,8 +127,14 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", damageToSend, SendMessageOptions.DontRequireReceiver);
-        vp_Timer.In(0.5f, () => {vp_Utility.Destroy(gameObject);});
+        vp_Timer.In(0.5f, () => {SafeRemove();});
 
+    }
+
+    public void SafeRemove() {
+        if (this != null && gameObject != null) {
+            vp_Utility.Destroy(gameObject);
+        }
     }
 
     /// <summary>
