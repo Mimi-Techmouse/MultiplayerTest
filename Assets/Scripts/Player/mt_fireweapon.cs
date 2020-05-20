@@ -18,8 +18,12 @@ public class mt_fireweapon : MonoBehaviour {
     {
         get
         {
-            if (m_PlayerPlane == null)
-                m_PlayerPlane = Handler.GetComponent<mt_EventHandler>();
+            if (m_PlayerPlane == null) {
+                if (Handler != null)
+                    m_PlayerPlane = Handler.GetComponent<mt_EventHandler>();
+                else
+                    m_PlayerPlane = transform.parent.parent.GetComponent<mt_EventHandler>();
+            }
             return m_PlayerPlane;
         }
     }
@@ -52,14 +56,14 @@ public class mt_fireweapon : MonoBehaviour {
 
     public Vector3 GetTargetLocation() {
 
-    	return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*100));
+        if (Handler != null)
+    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*100));
+        else
+           return (PlayerPlane.transform.position+PlayerPlane.transform.forward*100);
 
     }
 
     public void SpawnProjectile() {
-
-    	if (Handler == null)
-    		return;	
 
     	//Debug.Log("spawning projectile");
 
