@@ -28,7 +28,6 @@ public class mt_ui_healthbar : MonoBehaviour {
     /// </summary>
     protected virtual void OnMessage_HealthChanged() {
 
-    	Debug.Log("health bar should update!");
     	UpdateHealthBar();
     }
 
