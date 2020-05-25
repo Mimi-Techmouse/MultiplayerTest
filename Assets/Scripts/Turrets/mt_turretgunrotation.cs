@@ -27,9 +27,9 @@ public class mt_turretgunrotation : MonoBehaviour
 	void Update() {
 
 		mt_EventHandler target = PlayerPlane.CurrentTarget.Get();
-		Debug.Log("target: "+target.name);
 		if (target == null)
 			return;
+		Debug.Log("target: "+target.name);
 
 		Vector3 look = target.transform.position - transform.position;
          
