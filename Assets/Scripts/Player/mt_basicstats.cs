@@ -114,9 +114,9 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
         if (PlayerPlane.isLocalPlayer.Get()) {
             Debug.Log("should disconnect: "+this.name);
 
-            PhotonNetwork.Disconnect();
+            PhotonNetwork.LeaveRoom();
 
-            vp_Timer.In(Time.deltaTime, () => { Application.LoadLevel("Menu_Lobby"); });
+            vp_Timer.In(Time.deltaTime, () => { PhotonNetwork.LoadLevel("Menu_Lobby"); });
         }
     }
 

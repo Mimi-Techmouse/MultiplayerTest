@@ -35,6 +35,7 @@ public class mt_lobbyhandling : MonoBehaviour, IChatClientListener {
 	private string currentChat 		= "";
 
 	void Start() {
+
 		PlayerList = new Dictionary<string, int>();
 		user_id = PlayerPrefs.GetString("user_name");
 		Debug.Log("connecting with "+user_id);
@@ -52,6 +53,10 @@ public class mt_lobbyhandling : MonoBehaviour, IChatClientListener {
 	}
 
 	void Update() {
+		vp_Utility.LockCursor = false;
+        Screen.lockCursor = false;
+        Cursor.visible = true;
+
 		if (chatClient != null) {
 			chatClient.Service(); 
 		}
