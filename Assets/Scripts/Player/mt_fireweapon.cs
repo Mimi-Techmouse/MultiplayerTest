@@ -22,7 +22,7 @@ public class mt_fireweapon : MonoBehaviour {
                 if (Handler != null)
                     m_PlayerPlane = Handler.GetComponent<mt_EventHandler>();
                 else
-                    m_PlayerPlane = transform.parent.parent.GetComponent<mt_EventHandler>();
+                    m_PlayerPlane = transform.root.GetComponent<mt_EventHandler>();
             }
             return m_PlayerPlane;
         }

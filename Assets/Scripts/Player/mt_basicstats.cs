@@ -79,6 +79,19 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	PlayerPlane.Health.Set(myHealth-damageAmount);
     }
 
+    //For hiding all renderers on death!
+    public void HideMe() {
+
+        if (transform.GetComponent<Renderer>() != null) {
+            transform.GetComponent<Renderer>().enabled = false;
+        }
+
+        foreach (Renderer ren in transform.GetComponentsInChildren<Renderer>()) {
+            ren.enabled = false;
+        }
+
+    }
+
 
     /// <summary>
     /// For when you die
@@ -86,8 +99,11 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     protected virtual void OnStart_Dead() {
     	Debug.Log(transform.name+" should be deeeeeead");
 
+        PlayerPlane.gameObject.SendMessage ("HideMe", true, SendMessageOptions.DontRequireReceiver);
+
     	GameObject myExplosion = PhotonNetwork.Instantiate("VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
-    	vp_Timer.In(2.0f, () => { vp_Utility.Destroy(myExplosion); });
+    	vp_Timer.In(2.0f, () => { vp_Utility.Destroy(myExplosion); vp_Utility.Destroy(transform.gameObject); });
+
     }
 
 

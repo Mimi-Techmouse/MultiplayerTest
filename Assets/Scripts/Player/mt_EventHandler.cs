@@ -44,6 +44,9 @@ public class mt_EventHandler : vp_StateEventHandler {
     //Notifications!
     public vp_Message HealthChanged;
 
+    //Get the enemy target - used by AI
+    public vp_Value<mt_EventHandler> CurrentTarget;
+
 
     /// <summary>
     /// 
