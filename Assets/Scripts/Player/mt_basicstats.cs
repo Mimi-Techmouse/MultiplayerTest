@@ -97,13 +97,27 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     /// For when you die
     /// </summary>
     protected virtual void OnStart_Dead() {
-    	Debug.Log(transform.name+" should be deeeeeead");
 
         PlayerPlane.gameObject.SendMessage ("HideMe", true, SendMessageOptions.DontRequireReceiver);
 
     	GameObject myExplosion = PhotonNetwork.Instantiate("VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
-    	vp_Timer.In(2.0f, () => { vp_Utility.Destroy(myExplosion); vp_Utility.Destroy(transform.gameObject); });
+    	
+        vp_Timer.In(2.0f, () => { 
+            vp_Utility.Destroy(myExplosion); 
+            if (!PlayerPlane.isLocalPlayer.Get()) {
+                Debug.Log("should destroy: "+this.name);
+                //vp_Utility.Destroy(transform.gameObject); 
+            }
+        });
 
+
+        if (PlayerPlane.isLocalPlayer.Get()) {
+            Debug.Log("should disconnect: "+this.name);
+
+            PhotonNetwork.Disconnect();
+
+            vp_Timer.In(Time.deltaTime, () => { Application.LoadLevel("Menu_Lobby"); });
+        }
     }
 
 
