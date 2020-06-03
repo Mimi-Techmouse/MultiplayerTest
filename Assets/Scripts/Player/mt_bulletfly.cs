@@ -24,7 +24,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
             SafeRemove();
         }
 
-    	if (Vector3.Distance(transform.position, target) < 1.0f) {
+    	if (Vector3.Distance(transform.position, target) < 20.0f) {
     		SafeRemove();
     	}
 

@@ -71,9 +71,9 @@ public class mt_fireweapon : MonoBehaviour {
     public Vector3 GetTargetLocation() {
 
         if (Handler != null)
-    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*100));
+    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*500));
         else
-           return (PlayerPlane.transform.position+PlayerPlane.transform.forward*100);
+           return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 500)));
 
     }
 
@@ -88,6 +88,12 @@ public class mt_fireweapon : MonoBehaviour {
         lastBullet.SetFirer(PlayerPlane);
 
         Vector3 targetLoc = GetTargetLocation();
+
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.position = targetLoc;
+        cube.transform.localScale = new Vector3(10, 10, 10);
+
+        Debug.Log("setting target: "+targetLoc);
         lastBullet.SetTarget(targetLoc);
 
     }

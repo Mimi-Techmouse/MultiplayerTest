@@ -39,8 +39,8 @@ public class mt_turret : MonoBehaviour {
         q.x = 0;
 
         //We are within bounds! Get 'im!
-        Debug.Log("look: "+look);
-        Debug.Log("within angle? "+Quaternion.Angle (q, baseRotation));
+        //Debug.Log("look: "+look);
+        //Debug.Log("within angle? "+Quaternion.Angle (q, baseRotation));
         if (Quaternion.Angle (q, baseRotation) <= MaxRotation) {
             targetRotation = q;
         	StartFiring();
