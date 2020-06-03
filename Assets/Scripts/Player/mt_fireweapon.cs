@@ -13,6 +13,8 @@ public class mt_fireweapon : MonoBehaviour {
 
 	protected mt_bulletfly lastBullet;
 
+    protected int checkedForPlayer = 0;
+
     public mt_EventHandler m_PlayerPlane = null;
     public mt_EventHandler PlayerPlane
     {
@@ -26,6 +28,18 @@ public class mt_fireweapon : MonoBehaviour {
             }
             return m_PlayerPlane;
         }
+    }
+
+    //Removing extra instantiations
+    public void Update() {
+
+        if (PlayerPlane == null)
+            checkedForPlayer++;
+        else
+            return;
+
+        if (checkedForPlayer > 5)
+            vp_Utility.Destroy(gameObject);
     }
 
     protected AudioSource m_audio = null;
@@ -66,11 +80,15 @@ public class mt_fireweapon : MonoBehaviour {
     public void SpawnProjectile() {
 
     	//Debug.Log("spawning projectile");
+        if (PlayerPlane != null && !PlayerPlane.isLocalPlayer.Get())
+            return;
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
     	lastBullet = oBullet.GetComponent<mt_bulletfly>();
         lastBullet.SetFirer(PlayerPlane);
-        lastBullet.SetTarget(GetTargetLocation());
+
+        Vector3 targetLoc = GetTargetLocation();
+        lastBullet.SetTarget(targetLoc);
 
     }
 }
