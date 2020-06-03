@@ -56,6 +56,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
         float z = Time.deltaTime * speed;
         transform.Translate(0, 0, z);
 
+        Debug.Log("distance from target: "+Vector3.Distance(transform.position, target));
+
     }
 
 
@@ -94,7 +96,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
                 Debug.Log("Other self doesn't have photon view.");
                 return;
             }
-        }
+        } if (other.gameObject.name == "Trigger")
+            return;
 
         shouldDie = true;
 
@@ -123,7 +126,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
                 Debug.Log("Other self doesn't have photon view.");
                 return;
             }
-        }
+        } if (other.gameObject.name == "Trigger")
+            return;
 
         shouldDie = true;
 
