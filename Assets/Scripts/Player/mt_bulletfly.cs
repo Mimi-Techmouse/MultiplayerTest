@@ -97,7 +97,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnTriggerEnter(Collider other) {
 
-        Debug.Log("hit trigger: "+other.name);
+        Debug.Log("hit trigger: "+other.gameObject.name);
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
@@ -129,7 +129,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnCollisionEnter(Collision other) {
 
-        Debug.Log("hit collider: "+other.name);
+        Debug.Log("hit collider: "+other.gameObject.name);
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
