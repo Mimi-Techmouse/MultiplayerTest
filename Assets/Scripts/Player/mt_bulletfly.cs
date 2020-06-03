@@ -56,8 +56,6 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
         float z = Time.deltaTime * speed;
         transform.Translate(0, 0, z);
 
-        Debug.Log("distance from target: "+Vector3.Distance(transform.position, target));
-
     }
 
 
@@ -82,9 +80,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
         Debug.DrawRay(transform.position, newDirection, Color.red);
 
         // Calculate a rotation a step closer to the target and applies rotation to this object
-        Debug.Log("before rotation: "+transform.rotation);
         transform.rotation = Quaternion.LookRotation(newDirection);
-        Debug.Log("after rotation: "+transform.rotation);
     }
 
 
@@ -100,6 +96,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     public void OnTriggerEnter(Collider other) {
+
+        Debug.Log("hit trigger: "+other.name);
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
@@ -130,6 +128,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     public void OnCollisionEnter(Collision other) {
+
+        Debug.Log("hit collider: "+other.name);
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
