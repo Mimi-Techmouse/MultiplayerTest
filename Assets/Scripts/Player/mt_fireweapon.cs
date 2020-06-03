@@ -71,9 +71,9 @@ public class mt_fireweapon : MonoBehaviour {
     public Vector3 GetTargetLocation() {
 
         if (Handler != null)
-    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*100));
+    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*500));
         else
-           return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100)));
+           return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 500)));
 
     }
 
