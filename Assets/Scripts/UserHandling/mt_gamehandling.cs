@@ -128,8 +128,8 @@ public class mt_gamehandling : MonoBehaviourPunCallbacks {
 
     public void StartGame() {
     	PhotonNetwork.CurrentRoom.IsOpen = false;
-    	//PhotonNetwork.LoadLevel("Game_TestLevel");
-        PhotonNetwork.LoadLevel("Networking_Test");
+    	PhotonNetwork.LoadLevel("Game_TestLevel");
+        //PhotonNetwork.LoadLevel("Networking_Test");
     } 
 
 	private IEnumerator CoShowMessage(float fTime, string sTitle, string sMessage, string sReturnMode) {
