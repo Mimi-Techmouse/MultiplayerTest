@@ -22,17 +22,14 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     public void Update() {
 
         if (shouldDie) {
-            Debug.Log("should die");
             SafeRemove();
         }
 
     	if (Vector3.Distance(transform.position, target) < 20.0f) {
-            Debug.Log("we're too close!");
     		SafeRemove();
     	}
 
         if (Time.time-timeCreated > 100.0f) {
-            Debug.Log("is expiring");
             SafeRemove();
         }
 
@@ -49,6 +46,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     public void LateUpdate() {
 
         if (target == Vector3.zero)
+            return;
+        if (!photonView.IsMine)
             return;
 
         // Move our position a step closer to the target.
@@ -68,6 +67,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     public void RotateToTarget() {
 
         if (target == Vector3.zero)
+            return;
+        if (!photonView.IsMine)
             return;
 
         // Determine which direction to rotate towards
@@ -97,13 +98,14 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnTriggerEnter(Collider other) {
 
-        Debug.Log("hit trigger: "+other.gameObject.name);
-
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
         } if (Firer == null)  {
             return;
-        } if (Firer.gameObject == other.gameObject) {
+        } 
+
+        mt_damagehandler damHandler = other.gameObject.GetComponent<mt_damagehandler>();
+        if (damHandler != null && damHandler.Handler.gameObject == Firer.gameObject) {
             if (other.gameObject.GetComponent<PhotonView>() != null) {
                 if (parentViewID == other.gameObject.GetComponent<PhotonView>().ViewID) {
                     return;
@@ -129,13 +131,14 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnCollisionEnter(Collision other) {
 
-        Debug.Log("hit collider: "+other.gameObject.name);
-
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
         } if (Firer == null)  {
             return;
-        } if (Firer.gameObject == other.gameObject) {
+        } 
+        
+        mt_damagehandler damHandler = other.gameObject.GetComponent<mt_damagehandler>();
+        if (damHandler != null && damHandler.Handler.gameObject == Firer.gameObject) {
             if (other.gameObject.GetComponent<PhotonView>() != null) {
                 if (parentViewID == other.gameObject.GetComponent<PhotonView>().ViewID) {
                     return;
@@ -160,7 +163,6 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     public void SafeRemove() {
-        Debug.Log("removing bullet");
         if (this != null && gameObject != null) {
             vp_Utility.Destroy(gameObject);
         }

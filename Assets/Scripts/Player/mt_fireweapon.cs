@@ -81,7 +81,7 @@ public class mt_fireweapon : MonoBehaviour {
 
         if (PlayerPlane != null && !PlayerPlane.isLocalPlayer.Get())
             return;
-        Debug.Log("spawning projectile");
+        //Debug.Log("spawning projectile");
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
     	lastBullet = oBullet.GetComponent<mt_bulletfly>();
@@ -93,7 +93,7 @@ public class mt_fireweapon : MonoBehaviour {
         cube.transform.position = targetLoc;
         cube.transform.localScale = new Vector3(2, 2, 2);*/
 
-        Debug.Log("setting target: "+targetLoc);
+        //Debug.Log("setting target: "+targetLoc);
         lastBullet.SetTarget(targetLoc);
 
     }
