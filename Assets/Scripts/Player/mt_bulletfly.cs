@@ -16,19 +16,23 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     public void Awake() {
         timeCreated = Time.time;
+        target = Vector3.zero;
     }
 
     public void Update() {
 
         if (shouldDie) {
+            Debug.Log("should die");
             SafeRemove();
         }
 
     	if (Vector3.Distance(transform.position, target) < 20.0f) {
+            Debug.Log("we're too close!");
     		SafeRemove();
     	}
 
-        if (Time.time-timeCreated > 10.0f) {
+        if (Time.time-timeCreated > 100.0f) {
+            Debug.Log("is expiring");
             SafeRemove();
         }
 
@@ -38,13 +42,19 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
             Firer = obj.GetComponent<mt_EventHandler>();
         }
 
+        transform.LookAt(target);
+
     }
 
     public void LateUpdate() {
 
+        if (target == Vector3.zero)
+            return;
+
         // Move our position a step closer to the target.
-        float step =  speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, target, step);
+        transform.LookAt(target);
+        float z = Time.deltaTime * speed;
+        transform.Translate(0, 0, z);
 
     }
 
@@ -70,15 +80,12 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
     public void OnTriggerEnter(Collider other) {
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
-            Debug.Log("Hit fellow bullet");
             return;
         } if (Firer == null)  {
-            Debug.Log("I don't have a firer yet");
             return;
         } if (Firer.gameObject == other.gameObject) {
             if (other.gameObject.GetComponent<PhotonView>() != null) {
                 if (parentViewID == other.gameObject.GetComponent<PhotonView>().ViewID) {
-                    Debug.Log("I hit myself!");
                     return;
                 } else {
                     Debug.Log("hit ID: "+other.gameObject.GetComponent<PhotonView>().ViewID);
@@ -91,26 +98,23 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         shouldDie = true;
 
-        Debug.Log(other.gameObject.name+" trigger entered!");
+        //Debug.Log(other.gameObject.name+" trigger entered!");
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", myDamage, SendMessageOptions.DontRequireReceiver);
-        vp_Timer.In(0.5f, () => {SafeRemove();});
+        vp_Timer.In(0.5f, () => {Debug.Log("hit "+other.gameObject.name+" and removing");SafeRemove();});
 
     }
 
     public void OnCollisionEnter(Collision other) {
 
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
-            Debug.Log("Hit fellow bullet");
             return;
         } if (Firer == null)  {
-            Debug.Log("I don't have a firer yet");
             return;
         } if (Firer.gameObject == other.gameObject) {
             if (other.gameObject.GetComponent<PhotonView>() != null) {
                 if (parentViewID == other.gameObject.GetComponent<PhotonView>().ViewID) {
-                    Debug.Log("I hit myself!");
                     return;
                 } else {
                     Debug.Log("hit ID: "+other.gameObject.GetComponent<PhotonView>().ViewID);
@@ -123,15 +127,16 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         shouldDie = true;
 
-        Debug.Log(other.gameObject.name+" collider entered!");
+        //Debug.Log(other.gameObject.name+" collider entered!");
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", damageToSend, SendMessageOptions.DontRequireReceiver);
-        vp_Timer.In(0.5f, () => {SafeRemove();});
+        vp_Timer.In(0.5f, () => {Debug.Log("hit "+other.gameObject.name+" and removing");SafeRemove();});
 
     }
 
     public void SafeRemove() {
+        Debug.Log("removing bullet");
         if (this != null && gameObject != null) {
             vp_Utility.Destroy(gameObject);
         }

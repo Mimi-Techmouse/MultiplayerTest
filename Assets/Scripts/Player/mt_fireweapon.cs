@@ -71,17 +71,17 @@ public class mt_fireweapon : MonoBehaviour {
     public Vector3 GetTargetLocation() {
 
         if (Handler != null)
-    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*500));
+    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*100));
         else
-           return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 500)));
+           return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100)));
 
     }
 
     public void SpawnProjectile() {
 
-    	//Debug.Log("spawning projectile");
         if (PlayerPlane != null && !PlayerPlane.isLocalPlayer.Get())
             return;
+        Debug.Log("spawning projectile");
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
     	lastBullet = oBullet.GetComponent<mt_bulletfly>();
@@ -91,7 +91,7 @@ public class mt_fireweapon : MonoBehaviour {
 
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = targetLoc;
-        cube.transform.localScale = new Vector3(10, 10, 10);
+        cube.transform.localScale = new Vector3(2, 2, 2);
 
         Debug.Log("setting target: "+targetLoc);
         lastBullet.SetTarget(targetLoc);
