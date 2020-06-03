@@ -89,9 +89,9 @@ public class mt_fireweapon : MonoBehaviour {
 
         Vector3 targetLoc = GetTargetLocation();
 
-        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        /*GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = targetLoc;
-        cube.transform.localScale = new Vector3(2, 2, 2);
+        cube.transform.localScale = new Vector3(2, 2, 2);*/
 
         Debug.Log("setting target: "+targetLoc);
         lastBullet.SetTarget(targetLoc);

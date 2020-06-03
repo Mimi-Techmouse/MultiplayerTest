@@ -42,7 +42,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
             Firer = obj.GetComponent<mt_EventHandler>();
         }
 
-        transform.LookAt(target);
+        RotateToTarget();
 
     }
 
@@ -52,7 +52,7 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
             return;
 
         // Move our position a step closer to the target.
-        transform.LookAt(target);
+        RotateToTarget();
         float z = Time.deltaTime * speed;
         transform.Translate(0, 0, z);
 
@@ -65,6 +65,26 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     	target = pos;
 
+    }
+
+    public void RotateToTarget() {
+
+        if (target == Vector3.zero)
+            return;
+
+        // Determine which direction to rotate towards
+        Vector3 targetDirection = target - transform.position;
+
+        // Rotate the forward vector towards the target direction by one step
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, 360, 0.0f);
+
+        // Draw a ray pointing at our target in
+        Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        // Calculate a rotation a step closer to the target and applies rotation to this object
+        Debug.Log("before rotation: "+transform.rotation);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        Debug.Log("after rotation: "+transform.rotation);
     }
 
 
