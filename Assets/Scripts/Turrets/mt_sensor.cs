@@ -46,7 +46,7 @@ public class mt_sensor : MonoBehaviour {
 			Transform item = hitColliders[n].transform;
 			mt_EventHandler itemHandler = item.GetComponent<mt_EventHandler>();
 			if (itemHandler != null && !itemHandler.Dead.Active) {
-				Debug.Log("found: "+item.name);
+				//Debug.Log("found: "+item.name);
 				enemies.Add(itemHandler);
 
 				float thisDistance = Vector3.Distance(transform.position, item.position);

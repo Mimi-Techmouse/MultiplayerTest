@@ -30,7 +30,7 @@ public class mt_turret : MonoBehaviour {
 		mt_EventHandler target = PlayerPlane.CurrentTarget.Get();
 		if (target == null)
 			return;
-		Debug.Log("target: "+target.name);
+		//Debug.Log("target: "+target.name);
 
 		Vector3 look = target.transform.position - transform.position;
          

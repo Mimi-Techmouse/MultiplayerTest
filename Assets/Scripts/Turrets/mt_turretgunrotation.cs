@@ -29,7 +29,7 @@ public class mt_turretgunrotation : MonoBehaviour
 		mt_EventHandler target = PlayerPlane.CurrentTarget.Get();
 		if (target == null)
 			return;
-		Debug.Log("target: "+target.name);
+		//Debug.Log("target: "+target.name);
 
 		Vector3 look = target.transform.position - transform.position;
          
@@ -37,8 +37,8 @@ public class mt_turretgunrotation : MonoBehaviour
         q.z = 0;
 
         //We are within bounds! Get 'im!
-        Debug.Log("look: "+look);
-        Debug.Log("within angle? "+Quaternion.Angle (q, baseRotation));
+        //Debug.Log("look: "+look);
+        //Debug.Log("within angle? "+Quaternion.Angle (q, baseRotation));
         if (Quaternion.Angle (q, baseRotation) <= MaxRotation) {
             targetRotation = q;
         } 

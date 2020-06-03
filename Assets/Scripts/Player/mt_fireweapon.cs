@@ -71,15 +71,17 @@ public class mt_fireweapon : MonoBehaviour {
     public Vector3 GetTargetLocation() {
 
         if (Handler != null)
-    	   return (Handler.Crosshair.transform.position+(Handler.Crosshair.transform.forward*500));
+    	   return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 500)));
         else
-           return (Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 500)));
+           return PlayerPlane.transform.position+(PlayerPlane.transform.forward*500);
 
     }
 
     public void SpawnProjectile() {
 
-        if (PlayerPlane != null && !PlayerPlane.isLocalPlayer.Get())
+        if (Handler != null && !PlayerPlane.isLocalPlayer.Get())
+            return;
+        if (PlayerPlane == null || PlayerPlane.Dead.Active)
             return;
         //Debug.Log("spawning projectile");
 

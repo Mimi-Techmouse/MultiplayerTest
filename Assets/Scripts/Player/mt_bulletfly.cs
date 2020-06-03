@@ -98,6 +98,8 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnTriggerEnter(Collider other) {
 
+        Debug.Log(gameObject.name+" - "+other.gameObject.name+" trigger entered!");
+
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
         } if (Firer == null)  {
@@ -121,22 +123,22 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
 
         shouldDie = true;
 
-        //Debug.Log(other.gameObject.name+" trigger entered!");
-
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
-        other.gameObject.SendMessage ("ApplyDamage", myDamage, SendMessageOptions.DontRequireReceiver);
+        other.gameObject.SendMessage ("ApplyDamage", damageToSend, SendMessageOptions.DontRequireReceiver);
         vp_Timer.In(0.5f, () => {Debug.Log("hit "+other.gameObject.name+" and removing");SafeRemove();});
 
     }
 
     public void OnCollisionEnter(Collision other) {
 
+        Debug.Log(gameObject.name+" - "+other.gameObject.name+" collider entered!");
+
         if (other.gameObject.GetComponent<mt_bulletfly>() != null) {
             return;
         } if (Firer == null)  {
             return;
         } 
-        
+
         mt_damagehandler damHandler = other.gameObject.GetComponent<mt_damagehandler>();
         if (damHandler != null && damHandler.Handler.gameObject == Firer.gameObject) {
             if (other.gameObject.GetComponent<PhotonView>() != null) {
@@ -153,8 +155,6 @@ public class mt_bulletfly : MonoBehaviourPunCallbacks, IPunObservable
             return;
 
         shouldDie = true;
-
-        //Debug.Log(other.gameObject.name+" collider entered!");
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(myDamage, transform.position, Firer.gameObject);
         other.gameObject.SendMessage ("ApplyDamage", damageToSend, SendMessageOptions.DontRequireReceiver);
