@@ -8,6 +8,7 @@ public class mt_fireweapon : MonoBehaviour {
 
 	public string bulletName = "";
 	public Transform firingPoint = null;
+    public GameObject fireParticle = null;
 	protected float lastFired = 0.0f;
 	protected mt_weaponhandler Handler = null;
 
@@ -83,6 +84,9 @@ public class mt_fireweapon : MonoBehaviour {
             return;
         if (PlayerPlane == null || PlayerPlane.Dead.Active)
             return;
+
+        fireParticle.SetActive(true);
+        vp_Timer.In(0.6f, () => { fireParticle.SetActive(false); });
         //Debug.Log("spawning projectile");
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
