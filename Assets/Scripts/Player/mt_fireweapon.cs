@@ -86,7 +86,13 @@ public class mt_fireweapon : MonoBehaviour {
             return;
 
         fireParticle.SetActive(true);
-        vp_Timer.In(0.6f, () => { fireParticle.SetActive(false); });
+        //fireParticle.GetComponent<ParticleSystem>().Play();
+        //fireParticle.GetComponent<ParticleSystem>().Simulate(GetComponent<ParticleSystem>().duration);
+
+        vp_Timer.In(0.5f, () => { 
+            //fireParticle.GetComponent<ParticleSystem>().Clear();
+            fireParticle.SetActive(false); 
+        });
         //Debug.Log("spawning projectile");
 
     	GameObject oBullet = PhotonNetwork.Instantiate("Prefabs/"+bulletName, firingPoint.position, Quaternion.identity);
