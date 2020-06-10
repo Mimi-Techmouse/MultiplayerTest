@@ -89,7 +89,7 @@ public class mt_fireweapon : MonoBehaviour {
         //fireParticle.GetComponent<ParticleSystem>().Play();
         //fireParticle.GetComponent<ParticleSystem>().Simulate(GetComponent<ParticleSystem>().duration);
 
-        vp_Timer.In(0.5f, () => { 
+        vp_Timer.In(0.7f, () => { 
             //fireParticle.GetComponent<ParticleSystem>().Clear();
             fireParticle.SetActive(false); 
         });
