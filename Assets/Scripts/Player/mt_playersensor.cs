@@ -84,7 +84,7 @@ public class mt_playersensor : MonoBehaviour
 				if (n >= mapObject.Count) {
 					GameObject newObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 					mapObject.Add(newObj);
-					mapObject[n].transform.localScale = new Vector3(0.025f, 0.025f, 0.025f);
+					mapObject[n].transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
 					mapObject[n].GetComponent<Renderer>().material.color = new Color(1,0,0,1);
 				} else {
 					mapObject[n].SetActive(true);
@@ -93,7 +93,7 @@ public class mt_playersensor : MonoBehaviour
 				Vector3 enemyPos = i.transform.position;
 				Vector3 mapPos = (enemyPos-transform.position).normalized;
 
-				mapObject[n].transform.position = MapSpace.transform.position+(mapPos/10);
+				mapObject[n].transform.position = MapSpace.transform.position+(mapPos/15);
 				mapObject[n].transform.parent = MapSpace.transform;
 			}
 
