@@ -114,8 +114,25 @@ public class mt_playersensor : MonoBehaviour
 			mt_thingofinterest itemHandler = item.GetComponent<mt_thingofinterest>();
 			if (itemHandler != null && itemHandler.gameObject != gameObject) {
 				Debug.Log("locking on to: "+item.name);
-				LockTarget = itemHandler.gameObject;
+				SetLockTarget(itemHandler.gameObject);
 			}
+		}
+	}
+
+	public void SetLockTarget(GameObject t) {
+		mt_objecthighlight highlight;
+		if (LockTarget != null) {
+			highlight = LockTarget.GetComponent<mt_objecthighlight>();
+			if (highlight != null) {
+				highlight.StopHighlight();
+			}
+		}
+
+		LockTarget = t;
+
+		highlight = t.GetComponent<mt_objecthighlight>();
+		if (highlight != null) {
+			highlight.StartHighlight();
 		}
 	}
 
