@@ -90,6 +90,7 @@ public class mt_playerinput : vp_Component
 
 		// interaction
 		InputInteract();
+		InputTarget();
 
 		// manage input for moving
 		InputMove();
@@ -103,6 +104,14 @@ public class mt_playerinput : vp_Component
 		// manage input for weapons
 		InputAttack();
 
+	}
+
+	protected virtual void InputTarget() {
+
+		if (vp_Input.GetButtonDown("TargetLock")) {
+			Debug.Log("checking target lock");
+			Player.FindAndLockTarget.Send();
+		}
 	}
 
 

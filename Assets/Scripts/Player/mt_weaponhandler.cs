@@ -67,6 +67,15 @@ public class mt_weaponhandler : MonoBehaviour {
     }
 
     /// <summary>
+    /// Get the crosshair
+    /// </summary>
+    protected virtual GameObject OnValue_Crosshair {
+        get {
+            return Crosshair;
+        }
+    }
+
+    /// <summary>
     /// registers this component with the event handler (if any)
     /// </summary>
     protected virtual void OnEnable()

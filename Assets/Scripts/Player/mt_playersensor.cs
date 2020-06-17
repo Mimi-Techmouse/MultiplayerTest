@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class mt_playersensor : MonoBehaviour
 {
+	public GameObject LockTarget;
 	public List<GameObject> enemies = null;
 	private float lastTested = 0.0f;
 	public float senseInterval = 1.0f;
@@ -13,13 +14,13 @@ public class mt_playersensor : MonoBehaviour
 	public GameObject SpinnyThing = null;
 	public List<GameObject> mapObject = null;
 
-    protected mt_EventHandler m_PlayerPlane = null;
-    public mt_EventHandler PlayerPlane
+    protected mt_PlayerEventHandler m_PlayerPlane = null;
+    public mt_PlayerEventHandler PlayerPlane
     {
         get
         {
             if (m_PlayerPlane == null)
-                m_PlayerPlane = transform.GetComponent<mt_EventHandler>();
+                m_PlayerPlane = transform.GetComponent<mt_PlayerEventHandler>();
             return m_PlayerPlane;
         }
     }
@@ -46,8 +47,6 @@ public class mt_playersensor : MonoBehaviour
 	}
 
 	public void GetSensed() {
-
-		Debug.Log("fetching enemies.");
 
 		float closestEnemey = Mathf.Infinity;
 
@@ -104,4 +103,48 @@ public class mt_playersensor : MonoBehaviour
 			mapObject[n].SetActive(false);
 		}
 	}
+
+	public virtual void OnMessage_FindAndLockTarget() {
+		float thickness = 1.5f; 
+		Vector3 origin = PlayerPlane.Crosshair.Get().transform.position;
+		Vector3 direction = transform.TransformDirection(Vector3.forward);
+		RaycastHit hit;
+		if (Physics.SphereCast(origin, thickness, direction, out hit, senseRadius)) {
+			Transform item = hit.collider.transform;
+			mt_thingofinterest itemHandler = item.GetComponent<mt_thingofinterest>();
+			if (itemHandler != null && itemHandler.gameObject != gameObject) {
+				Debug.Log("locking on to: "+item.name);
+				LockTarget = itemHandler.gameObject;
+			}
+		}
+	}
+
+    protected virtual GameObject OnValue_LockTarget {
+        get {
+            return LockTarget;
+        }
+    }
+
+    /// <summary>
+    /// registers this component with the event handler (if any)
+    /// </summary>
+    public virtual void OnEnable()
+    {
+
+        if (PlayerPlane != null)
+            PlayerPlane.Register(this);
+
+    }
+
+
+    /// <summary>
+    /// unregisters this component from the event handler (if any)
+    /// </summary>
+    public virtual void OnDisable()
+    {
+
+        if (PlayerPlane != null)
+            PlayerPlane.Unregister(this);
+
+    }
 }
