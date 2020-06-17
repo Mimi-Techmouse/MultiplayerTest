@@ -8,10 +8,10 @@ Shader "Outlined/UltimateOutline"
 		_MainTex("Texture", 2D) = "white" {}
 
 		_FirstOutlineColor("Outline color", Color) = (1, 0.43, 0,0.1) //255, 111, 0
-		_FirstOutlineWidth("Outlines width", Range(0.0, 2.0)) = 0.025
+		_FirstOutlineWidth("Outlines width", Range(0.0, 2.0)) = 0.1
 
 		_SecondOutlineColor("Outline color", Color) = (0.99, 0.75, 0.24, 1) //253, 191, 63
-		_SecondOutlineWidth("Outlines width", Range(0.0, 2.0)) = 0.005
+		_SecondOutlineWidth("Outlines width", Range(0.0, 2.0)) = 0.05
 
 		_Angle("Switch shader on angle", Range(0.0, 180.0)) = 0
 	}

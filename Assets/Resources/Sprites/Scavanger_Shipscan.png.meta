@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: 68f24a2dc2339de49a161b08ff0e4d38
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9156946608837865105
+    second: Scavanger_Shipscan_0
+  - first:
+      213: 3411648221266967440
+    second: Scavanger_Shipscan_1
+  - first:
+      213: 4347788573190213079
+    second: Scavanger_Shipscan_2
+  - first:
+      213: -1649593928218393522
+    second: Scavanger_Shipscan_3
+  - first:
+      213: 4618957032904742377
+    second: Scavanger_Shipscan_4
+  - first:
+      213: 3626795124131559710
+    second: Scavanger_Shipscan_5
+  - first:
+      213: -6429454339387290853
+    second: Scavanger_Shipscan_6
+  - first:
+      213: 3204742092351541931
+    second: Scavanger_Shipscan_7
+  - first:
+      213: -2106615165294295208
+    second: Scavanger_Shipscan_8
+  - first:
+      213: 2821055466286779416
+    second: Scavanger_Shipscan_9
+  - first:
+      213: -9184699381478402838
+    second: Scavanger_Shipscan_10
+  - first:
+      213: -8074914897898251924
+    second: Scavanger_Shipscan_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfcfe906a89edcc4c97d68d5082acaef
+      internalID: 9156946608837865105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_1
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1005d3a5b0f21648bc723ce6dace8a7
+      internalID: 3411648221266967440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_2
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbcbab78586e5604996f21358c1713e1
+      internalID: 4347788573190213079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_3
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be3f510f6072bb4cb645151f1127b25
+      internalID: -1649593928218393522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89b5717add9a93e439c63cf202899232
+      internalID: 4618957032904742377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_5
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe9d3fd6fa8a684fa98f1d154d80964
+      internalID: 3626795124131559710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_6
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6a408609df597c4b93f6853c6df3793
+      internalID: -6429454339387290853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_7
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf05cbdceac7a04eaaabc8974a20fed
+      internalID: 3204742092351541931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d621bce594873940b29d4e1c155684c
+      internalID: -2106615165294295208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_9
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d80896a077dcf944d986c0d69dadbd89
+      internalID: 2821055466286779416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_10
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd38651622171c4a97ac31a3337f363
+      internalID: -9184699381478402838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Shipscan_11
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c79c4b7eb6a2d740996eabe1cc8a6a6
+      internalID: -8074914897898251924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

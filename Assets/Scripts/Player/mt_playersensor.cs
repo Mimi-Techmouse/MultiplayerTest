@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class mt_playersensor : MonoBehaviour
 {
-	public GameObject LockTarget;
+	public GameObject LockTarget = null;
+	public GameObject LockSprite;
+	public mt_targetdisplay TargetDisplay = null;
+
 	public List<GameObject> enemies = null;
 	private float lastTested = 0.0f;
 	public float senseInterval = 1.0f;
@@ -25,7 +28,7 @@ public class mt_playersensor : MonoBehaviour
         }
     }
 
-    // Don't check for enemeis too often!
+    // Don't check for enemies too often!
 	public void Update() {
 
 		if (!PlayerPlane.isLocalPlayer.Get())
@@ -43,7 +46,31 @@ public class mt_playersensor : MonoBehaviour
 		if (!PlayerPlane.isLocalPlayer.Get())
 			return;
 
+		PositionLockUI();
 		DrawMap();
+	}
+
+	public void PositionLockUI() {
+		if (LockTarget == null) {
+			LockSprite.SetActive(false);
+			return;
+		}
+
+		Vector2 screenPoint = Camera.main.WorldToScreenPoint(LockTarget.transform.position);
+		Vector2 crossHairPoint = Camera.main.WorldToScreenPoint(PlayerPlane.Crosshair.Get().transform.position);
+		Vector2 toMove = screenPoint-crossHairPoint;
+
+		Vector2 center = new Vector2(Screen.width/2, Screen.height/2);
+
+		LockSprite.SetActive(true);
+		LockSprite.transform.localPosition = new Vector3(toMove.x, toMove.y, 0);
+
+		/*if (screenPoint.x < Screen.width && screenPoint.y < Screen.height && screenPoint.x >= 0 && screenPoint.y >= 0) {
+			LockSprite.SetActive(false);
+			return;
+		} else {
+			LockSprite.SetActive(true);
+		}*/
 	}
 
 	public void GetSensed() {
@@ -134,6 +161,10 @@ public class mt_playersensor : MonoBehaviour
 		if (highlight != null) {
 			highlight.StartHighlight();
 		}
+
+		mt_thingofinterest itemHandler = LockTarget.GetComponent<mt_thingofinterest>();
+		TargetDisplay.SetSpriteSheet(itemHandler.SpriteName);
+		TargetDisplay.SpriteSheetName = itemHandler.SpriteName;
 	}
 
     protected virtual GameObject OnValue_LockTarget {

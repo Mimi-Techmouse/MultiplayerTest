@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: 90852876f164fb44e95679b33c245218
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4701437841124581654
+    second: Scavanger_Turretscan_0
+  - first:
+      213: -9035057919181445678
+    second: Scavanger_Turretscan_1
+  - first:
+      213: 2324814745490307261
+    second: Scavanger_Turretscan_2
+  - first:
+      213: -8908088284199330241
+    second: Scavanger_Turretscan_3
+  - first:
+      213: -165379917298267224
+    second: Scavanger_Turretscan_4
+  - first:
+      213: 9137213513556349869
+    second: Scavanger_Turretscan_5
+  - first:
+      213: -149999044541153771
+    second: Scavanger_Turretscan_6
+  - first:
+      213: -7769564822542834757
+    second: Scavanger_Turretscan_7
+  - first:
+      213: -4030331052988336017
+    second: Scavanger_Turretscan_8
+  - first:
+      213: -6349608323286811187
+    second: Scavanger_Turretscan_9
+  - first:
+      213: -4454022979905996050
+    second: Scavanger_Turretscan_10
+  - first:
+      213: -7431297265494727226
+    second: Scavanger_Turretscan_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f8928e8bfd06c4dbbe7b5c9e9779f5
+      internalID: 4701437841124581654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_1
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d56fe851be08de94a9840d8ca1ec403e
+      internalID: -9035057919181445678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_2
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3256cddfe160a10419585399547cefa7
+      internalID: 2324814745490307261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_3
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 847.3334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ae74c5df3e196745bddf761f44c1ea7
+      internalID: -8908088284199330241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 912b7208746be76469c9b68b662d31d3
+      internalID: -165379917298267224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_5
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270435a5cbb921e439c04c87f2ff9b54
+      internalID: 9137213513556349869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_6
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31df0b3adeb615a4998403ccd9433210
+      internalID: -149999044541153771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_7
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 424.33334
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4062c3e1214974247b69babeeceae26f
+      internalID: -7769564822542834757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12026ede4b33aea4f94085c3f8ee400a
+      internalID: -4030331052988336017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_9
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7a659b3ae0095458cb369a2e184707
+      internalID: -6349608323286811187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_10
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d565c1517d50f444b337aa89edf5bbe
+      internalID: -4454022979905996050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scavanger_Turretscan_11
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 1.3333435
+        width: 423.5
+        height: 423.66666
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25ac6e00d53bf04f9b581dea499b01a
+      internalID: -7431297265494727226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
