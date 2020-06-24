@@ -28,14 +28,12 @@ public class mt_spawnplayer : MonoBehaviour
     	}
 
         ColorHaulers();
+
+        vp_Timer.In(0.5f, () => { SetPlayerColors(); });
     }
 
-    private void Update() {
-
-        if (ActivePlayers != null)
-            return;
-
-
+    private void SetPlayerColors() {
+        Debug.Log("looking for players!");
         ActivePlayers = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in ActivePlayers) {
 
@@ -51,7 +49,6 @@ public class mt_spawnplayer : MonoBehaviour
                 objToColor.GetComponent<MeshRenderer> ().material = newMat;
             }
         }
-
     }
 
     private void ColorHaulers() {

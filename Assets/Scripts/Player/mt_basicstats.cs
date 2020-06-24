@@ -85,7 +85,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     /// </summary>
     protected virtual void OnMessage_DamageMe(int damageAmount) {
 
-    	Debug.Log(gameObject.name+" message recieved: "+damageAmount);
+    	//Debug.Log(gameObject.name+" message recieved: "+damageAmount);
 
     	int myHealth = PlayerPlane.Health.Get();
     	PlayerPlane.Health.Set(myHealth-damageAmount);

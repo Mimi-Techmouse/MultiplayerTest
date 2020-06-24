@@ -41,7 +41,7 @@ public class mt_obstruction : MonoBehaviour {
 	/// *********************************************************************************** /// 
 	public void ApplyDamage(mt_Constants.Damage dam) {
 		mt_damagehandler handler = EventHandler.gameObject.GetComponent<mt_damagehandler>();
-		Debug.Log("forwarding damage up the chain");
+		//Debug.Log("forwarding damage up the chain");
 		handler.ApplyDamage(dam);
 	}
 
@@ -50,7 +50,7 @@ public class mt_obstruction : MonoBehaviour {
 	/// *********************************************************************************** /// 
 	public void OnTriggerEnter(Collider other) {
 
-        Debug.Log(transform.name+": "+other.transform.parent.name+" trigger entered!");
+        //Debug.Log(transform.name+": "+other.transform.parent.name+" trigger entered!");
 
         float force = 3.0f;
 
@@ -69,7 +69,7 @@ public class mt_obstruction : MonoBehaviour {
 	/// *********************************************************************************** /// 
     public void OnCollisionEnter(Collision other) {
 
-        Debug.Log(transform.name+": "+other.gameObject.name+" collider entered!");
+        //Debug.Log(transform.name+": "+other.gameObject.name+" collider entered!");
 
     	float force = 3.0f;
 

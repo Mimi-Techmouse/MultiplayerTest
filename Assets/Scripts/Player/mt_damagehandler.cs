@@ -26,7 +26,7 @@ public class mt_damagehandler : MonoBehaviour {
 	/// *********************************************************************************** /// 
 	public void ApplyDamage(mt_Constants.Damage dam) {
 
-        Debug.Log(transform.name + " says: Ouch");
+        //Debug.Log(transform.name + " says: Ouch");
 
 		//Blocks may need proper handlers
 		if ((Handler.Health.Get () - dam.DamageAmount) <= 0) {
