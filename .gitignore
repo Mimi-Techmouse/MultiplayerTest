@@ -26,6 +26,9 @@ Library/
 MultiplayerTest.sln
 MultiplayerTest-csharp.sln
 MultiplayerTest.userprefs
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+PhotonChat.csproj
 
 # =========================
 # Operating System Files
