@@ -50,12 +50,17 @@ public class mt_obstruction : MonoBehaviour {
 	/// *********************************************************************************** /// 
 	public void OnTriggerEnter(Collider other) {
 
-        Debug.Log(other.transform.parent.name+" trigger entered!");
+        Debug.Log(transform.name+": "+other.transform.parent.name+" trigger entered!");
 
-        if (other.transform.parent.gameObject != null)
-        	CollideWithOther(other.transform.parent.gameObject);
-        else
-        	CollideWithOther(other.gameObject);
+        float force = 3.0f;
+
+        Vector3 dir = -other.transform.forward.normalized;
+        GameObject target = GetDamageHandlerObject(other.gameObject);
+        if (target == null)
+            return;
+
+        target.SendMessage ("AddImpact", dir, SendMessageOptions.DontRequireReceiver);
+        CollideWithOther(target);
 
     }
 
@@ -64,32 +69,47 @@ public class mt_obstruction : MonoBehaviour {
 	/// *********************************************************************************** /// 
     public void OnCollisionEnter(Collision other) {
 
-        Debug.Log(other.gameObject.name+" collider entered!");
+        Debug.Log(transform.name+": "+other.gameObject.name+" collider entered!");
 
     	float force = 3.0f;
 
-    	Vector3 dir = other.contacts[0].point - transform.position;
-        dir = -dir.normalized;
-        other.gameObject.GetComponent<Rigidbody>().AddForce(dir*force);
+    	Vector3 dir = (other.contacts[0].point - transform.position).normalized;
+        GameObject target = GetDamageHandlerObject(other.gameObject);
+        if (target == null)
+            return;
 
-        if (other.transform.parent != null)
-        	CollideWithOther(other.transform.parent.gameObject);
-        else
-        	CollideWithOther(other.gameObject);
+        target.SendMessage ("AddImpact", dir, SendMessageOptions.DontRequireReceiver);
+        CollideWithOther(target);
 
     }
-
 
 	/// *********************************************************************************** /// 
 	/// Collision handling 
 	/// *********************************************************************************** /// 
     protected void CollideWithOther(GameObject other) {
 
+        Debug.Log("doing the collision");
+
     	SoundSource.clip = screech;
     	SoundSource.Play();
 
         mt_Constants.Damage damageToSend = new mt_Constants.Damage(DamageToDo, other.transform.position, gameObject);
         other.SendMessage ("ApplyDamage", damageToSend, SendMessageOptions.DontRequireReceiver);
+    }
+
+    /// *********************************************************************************** /// 
+    /// Get that damage handler!
+    /// *********************************************************************************** /// 
+    public GameObject GetDamageHandlerObject(GameObject other) {
+
+        if (other.GetComponent<mt_damagehandler>() != null) {
+            return other;
+        }
+        if (other.transform.parent.gameObject.GetComponent<mt_damagehandler>() != null) {
+            return other.transform.parent.gameObject;
+        }
+
+        return null;
     }
     
 }
