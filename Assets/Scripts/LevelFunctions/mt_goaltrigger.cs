@@ -15,6 +15,8 @@ public class mt_goaltrigger : MonoBehaviourPunCallbacks, IPunObservable
 
         Debug.Log(gameObject.name+": "+other.gameObject.name+" trigger entered!");
         GameObject target = GetQuestRunnerObject(other.gameObject);
+        if (target == null)
+            return;
 
 		target.SendMessage ("McGuffinDelivered", playerView, SendMessageOptions.DontRequireReceiver);
 
@@ -27,6 +29,8 @@ public class mt_goaltrigger : MonoBehaviourPunCallbacks, IPunObservable
 
         Debug.Log(gameObject.name+": "+other.gameObject.name+" collider entered!");
         GameObject target = GetQuestRunnerObject(other.gameObject);
+        if (target == null)
+            return;
 
 		target.SendMessage ("McGuffinDelivered", playerView, SendMessageOptions.DontRequireReceiver);
 

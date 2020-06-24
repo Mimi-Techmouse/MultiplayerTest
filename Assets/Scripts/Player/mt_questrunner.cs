@@ -36,14 +36,13 @@ public class mt_questrunner : MonoBehaviour {
     /// We delivered it!
     /// </summary>
     public void McGuffinDelivered(int viewID) {
-    	Debug.Log("delivered goal to : "+viewID);
 
     	if (viewID == PlayerPlane.GetPlayerView.Get()) {
-    		Debug.Log("and its the right ship!!!");
     		if (PlayerPlane.HasMcGuffin.Get()) {
     			Debug.Log("you win!");
     		}
     	}
+
     }
 
     /// <summary>
