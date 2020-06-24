@@ -14,6 +14,8 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool PlayerOwned = false;
 
+    public Transform McGuffin = null;
+
     protected int parentViewID = 0;
 
     protected mt_EventHandler m_PlayerPlane = null;
@@ -62,10 +64,25 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	}
     }
 
+    /// <summary>
+    /// Get the Local Player
+    /// </summary>
     protected virtual bool OnValue_isLocalPlayer {
     	get {
     		return PlayerOwned;
     	}
+    }
+
+    /// <summary>
+    /// Get the McGuffin
+    /// </summary>
+    protected virtual Transform OnValue_McGuffin {
+        get {
+            return McGuffin;
+        }
+        set {
+            McGuffin = value;
+        }
     }
 
     /// <summary>

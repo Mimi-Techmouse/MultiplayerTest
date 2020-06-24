@@ -23,6 +23,7 @@ public class mt_PlayerEventHandler : mt_EventHandler {
     public vp_Value<GameObject> Crosshair;
     public vp_Value<GameObject> LockTarget;
     public vp_Message FindAndLockTarget;
+    public vp_Value<Transform> McGuffin;
 
     //For FPController / Physics
 	public vp_Message<Vector3> Move;

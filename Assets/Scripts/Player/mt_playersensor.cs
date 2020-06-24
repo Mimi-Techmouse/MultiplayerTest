@@ -28,6 +28,11 @@ public class mt_playersensor : MonoBehaviour
         }
     }
 
+    public void Awake() {
+		if (PlayerPlane.isLocalPlayer.Get())
+			transform.GetComponent<mt_thingofinterest>().isSelf = true;
+    }
+
     // Don't check for enemies too often!
 	public void Update() {
 
@@ -85,8 +90,15 @@ public class mt_playersensor : MonoBehaviour
 
 			Transform item = hitColliders[n].transform;
 			mt_thingofinterest itemHandler = item.GetComponent<mt_thingofinterest>();
-			if (itemHandler != null && itemHandler.gameObject != gameObject) {
-				//Debug.Log("found: "+item.name);
+			if (itemHandler != null && !itemHandler.isSelf) {
+
+				mt_EventHandler handler = item.GetComponent<mt_EventHandler>();
+				if (handler != null && handler.Dead.Active) {
+					n++;
+					continue;
+				}
+
+				Debug.Log("found: "+item.name);
 				enemies.Add(itemHandler.gameObject);
 			}
 
@@ -137,12 +149,14 @@ public class mt_playersensor : MonoBehaviour
 		Vector3 direction = transform.TransformDirection(Vector3.forward);
 		RaycastHit hit;
 		if (Physics.SphereCast(origin, thickness, direction, out hit, senseRadius)) {
-			Transform item = hit.collider.transform;
+
+			Transform item = hit.transform;
 			mt_thingofinterest itemHandler = item.GetComponent<mt_thingofinterest>();
-			if (itemHandler != null && itemHandler.gameObject != gameObject) {
+			if (itemHandler != null && !itemHandler.isSelf) {
 				Debug.Log("locking on to: "+item.name);
 				SetLockTarget(itemHandler.gameObject);
 			}
+
 		}
 	}
 
