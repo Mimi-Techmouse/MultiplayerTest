@@ -24,7 +24,9 @@ public class mt_PlayerEventHandler : mt_EventHandler {
     public vp_Value<GameObject> LockTarget;
     public vp_Message FindAndLockTarget;
     public vp_Message<GameObject> GrabMcGuffin;
+    public vp_Message LooseMcGuffin;
     public vp_Value<Transform> McGuffin;
+    public vp_Value<bool> HasMcGuffin;
 
     //For FPController / Physics
 	public vp_Message<Vector3> Move;

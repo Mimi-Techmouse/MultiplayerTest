@@ -98,7 +98,7 @@ public class mt_playersensor : MonoBehaviour
 					continue;
 				}
 
-				Debug.Log("found: "+item.name);
+				//Debug.Log("found: "+item.name);
 				enemies.Add(itemHandler.gameObject);
 			}
 
@@ -153,7 +153,7 @@ public class mt_playersensor : MonoBehaviour
 			Transform item = hit.transform;
 			mt_thingofinterest itemHandler = item.GetComponent<mt_thingofinterest>();
 			if (itemHandler != null && !itemHandler.isSelf) {
-				Debug.Log("locking on to: "+item.name);
+				//Debug.Log("locking on to: "+item.name);
 				SetLockTarget(itemHandler.gameObject);
 			}
 

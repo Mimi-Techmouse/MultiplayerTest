@@ -72,6 +72,15 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     /// <summary>
+    /// Get the Local Player View
+    /// </summary>
+    protected virtual int OnValue_GetPlayerView {
+        get {
+            return parentViewID;
+        }
+    }
+
+    /// <summary>
     /// Apply Damage to current health
     /// </summary>
     protected virtual void OnMessage_DamageMe(int damageAmount) {
@@ -102,6 +111,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     protected virtual void OnStart_Dead() {
 
         PlayerPlane.gameObject.SendMessage ("HideMe", true, SendMessageOptions.DontRequireReceiver);
+        PlayerPlane.gameObject.SendMessage ("LooseMcGuffin", SendMessageOptions.DontRequireReceiver);
 
     	GameObject myExplosion = PhotonNetwork.Instantiate("VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
     	

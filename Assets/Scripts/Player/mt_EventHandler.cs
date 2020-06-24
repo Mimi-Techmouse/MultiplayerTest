@@ -46,6 +46,7 @@ public class mt_EventHandler : vp_StateEventHandler {
 
     //Get the enemy target - used by AI
     public vp_Value<mt_EventHandler> CurrentTarget;
+    public vp_Value<int> GetPlayerView;
 
 
     /// <summary>

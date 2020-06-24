@@ -17,6 +17,8 @@ public class mt_spawnplayer : MonoBehaviour
     		player.transform.position = SpawnPoints[id].transform.position;
     		player.transform.rotation = SpawnPoints[id].transform.rotation;
     		Debug.Log("assigning position: "+SpawnPoints[id].name);
+
+            SpawnPoints[id].transform.parent.GetComponentInChildren<mt_goaltrigger>().playerView = player.GetComponent<PhotonView>().ViewID;
     	} else {
     		Debug.Log("Don't have a spawn position; falling back on default.");
     	}
