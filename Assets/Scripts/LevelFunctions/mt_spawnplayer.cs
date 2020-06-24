@@ -30,15 +30,18 @@ public class mt_spawnplayer : MonoBehaviour
         ColorHaulers();
     }
 
-    private void Awake() {
+    private void Update() {
+
+        if (ActivePlayers != null)
+            return;
 
 
-        GameObject[] Players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject p in Players) {
+        ActivePlayers = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in ActivePlayers) {
 
             float thing = (p.GetComponent<PhotonView>().ViewID/1000.0f);
             int id = Mathf.FloorToInt(thing)-1;
-            
+
             Transform objToColor = p.transform.Find("Fuselage");
 
             if (objToColor != null) {

@@ -44,7 +44,7 @@ public class mt_goaltrigger : MonoBehaviourPunCallbacks, IPunObservable
         if (other.GetComponent<mt_questrunner>() != null) {
             return other;
         }
-        if (other.transform.parent.gameObject.GetComponent<mt_questrunner>() != null) {
+        if (other.transform.parent != null && other.transform.parent.gameObject.GetComponent<mt_questrunner>() != null) {
             return other.transform.parent.gameObject;
         }
 
