@@ -55,6 +55,9 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
 
     private void SetPlayerColors() {
 
+        if (ActivePlayers != null)
+            return;
+
         Debug.Log("doing player colors");
 
         ActivePlayers = GameObject.FindGameObjectsWithTag("Player");

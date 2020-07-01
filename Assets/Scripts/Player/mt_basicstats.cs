@@ -159,8 +159,10 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	GameObject myExplosion = PhotonNetwork.Instantiate("VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
     	
         Debug.Log("5");
+        PlayerPlane.Countdown.Send(5);
         vp_Timer.In(1.0f, () => { 
             Debug.Log("4");
+            PlayerPlane.Countdown.Send(4);
         });
         vp_Timer.In(2.0f, () => { 
             vp_Utility.Destroy(myExplosion); 
@@ -169,12 +171,15 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
                 //vp_Utility.Destroy(transform.gameObject); 
             }
             Debug.Log("3");
+            PlayerPlane.Countdown.Send(3);
         });
         vp_Timer.In(3.0f, () => { 
             Debug.Log("2");
+            PlayerPlane.Countdown.Send(2);
         });
         vp_Timer.In(4.0f, () => { 
             Debug.Log("1");
+            PlayerPlane.Countdown.Send(1);
         });
         vp_Timer.In(5.0f, () => { 
             Debug.Log("0");

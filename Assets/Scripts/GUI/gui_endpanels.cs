@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Photon.Pun;
 
@@ -9,6 +10,7 @@ public class gui_endpanels : MonoBehaviour {
 	public GameObject StartPanel = null;
 	public GameObject VictoryPanel = null;
 	public GameObject LossPanel = null;
+    public Text CountDown = null;
 
     protected mt_PlayerEventHandler m_PlayerPlane = null;
     public mt_PlayerEventHandler PlayerPlane
@@ -26,6 +28,7 @@ public class gui_endpanels : MonoBehaviour {
 	    LossPanel.SetActive(false);
 	    StartPanel.SetActive(false);
 	    PlayerPlane.ShowStartPanel.Send();
+        CountDown.gameObject.SetActive(false);
 	}
     
     void Update() {
@@ -58,6 +61,15 @@ public class gui_endpanels : MonoBehaviour {
     	StartPanel.SetActive(false);
 
 	}
+
+    protected virtual void OnMessage_Countdown(int n) {
+        CountDown.gameObject.SetActive(true);
+        CountDown.text = ""+n;
+
+        if (n <= 1) {
+            vp_Timer.In(0.9f, () => { CountDown.gameObject.SetActive(false); });
+        }
+    }
 
     /// <summary>
     /// Show the victory panel!

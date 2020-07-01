@@ -42,6 +42,7 @@ public class mt_EventHandler : vp_StateEventHandler {
     public vp_Value<bool> isLocalPlayer;
     public vp_Value<Transform> StartingLocation;
     public vp_Value<bool> isVictorious;
+    public vp_Message<int> Countdown;
 
     //Notifications!
     public vp_Message HealthChanged;
