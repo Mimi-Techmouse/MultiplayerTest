@@ -31,9 +31,10 @@ public class gui_endpanels : MonoBehaviour {
     void Update() {
 
 	    if (vp_Input.GetButtonDown("Menu")) {
-	    	StartPanel.SetActive(false);
-	    	VictoryPanel.SetActive(false);
-	    	LossPanel.SetActive(false);
+	    	HideStartPanel();
+
+	    	if (VictoryPanel.activeSelf || LossPanel.activeSelf) 
+	    		LogOff();
 	    }
 
 	}
@@ -53,6 +54,8 @@ public class gui_endpanels : MonoBehaviour {
 		Debug.Log("hiding the start panel!");
 
 		PlayerPlane.HideStartPanel.Send();
+
+    	StartPanel.SetActive(false);
 
 	}
 

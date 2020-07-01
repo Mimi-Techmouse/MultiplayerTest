@@ -83,7 +83,7 @@ public class mt_playerinput : vp_Component
 			return;
 		
 		// manage input for GUI
-		UpdateCursorLock();
+		//UpdateCursorLock();
 
 		if (!m_AllowGameplayInput)
 			return;
