@@ -65,7 +65,7 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
             SpawnPoints[id].transform.parent.GetComponentInChildren<mt_goaltrigger>().playerView = p.GetComponent<PhotonView>().ViewID;
             
 
-            Transform objToColor = p.transform.Find("Fuselage");
+            Transform objToColor = p.GetComponentInChildren<mt_shipbody>().bodyToColor;
 
             if (objToColor != null) {
                 Debug.Log("found something to color! "+objToColor.name);
