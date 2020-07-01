@@ -43,9 +43,9 @@ public class mt_questrunner : MonoBehaviour {
                 PlayerPlane.ShowVictoryPanel.Send();
     		}
     	} else {
-            Debug.Log("you delivered to the wrong place!");
-            Debug.Log("your id: "+PlayerPlane.GetPlayerView.Get());
-            Debug.Log("their id: "+viewID);
+            //Debug.Log("you delivered to the wrong place!");
+            //Debug.Log("your id: "+PlayerPlane.GetPlayerView.Get());
+            //Debug.Log("their id: "+viewID);
         }
 
     }

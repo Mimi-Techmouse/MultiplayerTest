@@ -13,7 +13,7 @@ public class mt_goaltrigger : MonoBehaviourPunCallbacks, IPunObservable
 	/// *********************************************************************************** /// 
 	public void OnTriggerEnter(Collider other) {
 
-       Debug.Log(gameObject.name+": "+other.gameObject.name+" trigger entered!");
+       //Debug.Log(gameObject.name+": "+other.gameObject.name+" trigger entered!");
         GameObject target = GetQuestRunnerObject(other.gameObject);
         if (target == null)
             return;
@@ -27,7 +27,7 @@ public class mt_goaltrigger : MonoBehaviourPunCallbacks, IPunObservable
 	/// *********************************************************************************** /// 
     public void OnCollisionEnter(Collision other) {
 
-      Debug.Log(gameObject.name+": "+other.gameObject.name+" collider entered!");
+      //Debug.Log(gameObject.name+": "+other.gameObject.name+" collider entered!");
         GameObject target = GetQuestRunnerObject(other.gameObject);
         if (target == null)
             return;
