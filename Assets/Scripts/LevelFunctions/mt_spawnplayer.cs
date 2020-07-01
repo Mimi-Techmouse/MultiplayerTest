@@ -70,6 +70,8 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
                 Material newMat = new Material(mat);
                 newMat.color = PlayerColors[id];
                 objToColor.GetComponent<MeshRenderer> ().material = newMat;
+            } else {
+                Debug.Log("nothing to color "+p.name);
             }
         }
     }
