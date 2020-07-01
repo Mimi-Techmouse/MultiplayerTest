@@ -64,6 +64,9 @@ public class gui_endpanels : MonoBehaviour {
     /// </summary>
     protected virtual void OnMessage_ShowVictoryPanel() {
 
+    	if (!PlayerPlane.isLocalPlayer.Get())
+    		return;
+
     	VictoryPanel.SetActive(true);
     }
 
@@ -72,6 +75,9 @@ public class gui_endpanels : MonoBehaviour {
     /// </summary>
     protected virtual void OnMessage_ShowLossPanel() {
 
+    	if (!PlayerPlane.isLocalPlayer.Get())
+    		return;
+
     	LossPanel.SetActive(true);
     }
 
@@ -79,6 +85,9 @@ public class gui_endpanels : MonoBehaviour {
     /// Show the start panel
     /// </summary>
     protected virtual void OnMessage_ShowStartPanel() {
+
+    	if (!PlayerPlane.isLocalPlayer.Get())
+    		return;
 
     	StartPanel.SetActive(true);
     }

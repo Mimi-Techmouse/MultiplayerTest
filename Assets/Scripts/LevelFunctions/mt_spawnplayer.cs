@@ -65,6 +65,7 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
             Transform objToColor = p.transform.Find("Fuselage");
 
             if (objToColor != null) {
+                Debug.Log("found something to color! "+objToColor.name);
                 Material mat = objToColor.GetComponent<MeshRenderer> ().material;
                 Material newMat = new Material(mat);
                 newMat.color = PlayerColors[id];
