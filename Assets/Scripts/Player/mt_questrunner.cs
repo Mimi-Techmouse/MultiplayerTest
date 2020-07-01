@@ -37,6 +37,9 @@ public class mt_questrunner : MonoBehaviour {
     /// </summary>
     public void McGuffinDelivered(int viewID) {
 
+        if (!PlayerPlane.isLocalPlayer.Get())
+            return;
+
     	if (viewID == PlayerPlane.GetPlayerView.Get()) {
     		if (PlayerPlane.HasMcGuffin.Get()) {
     			Debug.Log("you win!");
