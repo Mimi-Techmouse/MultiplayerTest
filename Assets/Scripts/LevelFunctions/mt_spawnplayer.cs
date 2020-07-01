@@ -13,6 +13,8 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool gameEnded = false;
 
+    protected bool colorsDone = false;
+
     private void Start() {
     	GameObject player = PhotonNetwork.Instantiate("Prefabs/"+PlayerPrefab.name, transform.position, Quaternion.identity);
 
@@ -55,7 +57,7 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
 
     private void SetPlayerColors() {
 
-        if (ActivePlayers != null)
+        if (colorsDone)
             return;
 
         Debug.Log("doing player colors");
@@ -80,6 +82,8 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
                 Debug.Log("nothing to color "+p.name);
             }
         }
+
+        colorsDone = true;
     }
 
     private void ColorHaulers() {
