@@ -76,6 +76,9 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     protected virtual void OnMessage_ShowVictoryPanel() {
 
         isVictorious = true;
+        if ( StartingLocation.root.GetComponent<mt_spawnplayer>() == null)
+            Debug.Log("failure! :( ");
+        StartingLocation.root.GetComponent<mt_spawnplayer>().gameEnded = true;
 
     }
 

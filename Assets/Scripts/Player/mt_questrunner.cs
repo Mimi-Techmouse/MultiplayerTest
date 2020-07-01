@@ -42,7 +42,11 @@ public class mt_questrunner : MonoBehaviour {
     			Debug.Log("you win!");
                 PlayerPlane.ShowVictoryPanel.Send();
     		}
-    	}
+    	} else {
+            Debug.Log("you delivered to the wrong place!");
+            Debug.Log("your id: "+PlayerPlane.GetPlayerView.Get());
+            Debug.Log("their id: "+viewID);
+        }
 
     }
 
