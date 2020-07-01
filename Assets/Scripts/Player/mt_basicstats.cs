@@ -14,6 +14,10 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool PlayerOwned = false;
 
+    public bool isVictorious = false;
+
+    public Transform StartingLocation = null;
+
     protected int parentViewID = 0;
 
     protected mt_EventHandler m_PlayerPlane = null;
@@ -57,9 +61,22 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     			PlayerPlane.Dead.Start();
     		}
 
+            if (currentHealth > 0 && PlayerPlane.Dead.Active) {
+                PlayerPlane.Dead.Stop();
+            }
+
             if (originalHealth != currentHealth)
                 PlayerPlane.HealthChanged.Send();
     	}
+    }
+
+    /// <summary>
+    /// Set the isVictorious marker
+    /// </summary>
+    protected virtual void OnMessage_ShowVictoryPanel() {
+
+        isVictorious = true;
+
     }
 
     /// <summary>
@@ -69,6 +86,27 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     	get {
     		return PlayerOwned;
     	}
+    }
+
+    /// <summary>
+    /// Get the Local Player
+    /// </summary>
+    protected virtual bool OnValue_isVictorious {
+        get {
+            return isVictorious;
+        }
+    }
+
+    /// <summary>
+    /// Get / Set the starting location
+    /// </summary>
+    protected virtual Transform OnValue_StartingLocation {
+        get {
+            return StartingLocation;
+        }
+        set {
+            StartingLocation = value;
+        }
     }
 
     /// <summary>
@@ -92,14 +130,14 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     //For hiding all renderers on death!
-    public void HideMe() {
+    public void HideMe(bool shouldHide) {
 
         if (transform.GetComponent<Renderer>() != null) {
-            transform.GetComponent<Renderer>().enabled = false;
+            transform.GetComponent<Renderer>().enabled = (!shouldHide);
         }
 
         foreach (Renderer ren in transform.GetComponentsInChildren<Renderer>()) {
-            ren.enabled = false;
+            ren.enabled = (!shouldHide);
         }
 
     }
@@ -115,22 +153,47 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
     	GameObject myExplosion = PhotonNetwork.Instantiate("VFX/Explosion", transform.position+transform.forward, Quaternion.identity);
     	
+        Debug.Log("5");
+        vp_Timer.In(1.0f, () => { 
+            Debug.Log("4");
+        });
         vp_Timer.In(2.0f, () => { 
             vp_Utility.Destroy(myExplosion); 
             if (!PlayerPlane.isLocalPlayer.Get()) {
                 Debug.Log("should destroy: "+this.name);
                 //vp_Utility.Destroy(transform.gameObject); 
             }
+            Debug.Log("3");
+        });
+        vp_Timer.In(3.0f, () => { 
+            Debug.Log("2");
+        });
+        vp_Timer.In(4.0f, () => { 
+            Debug.Log("1");
+        });
+        vp_Timer.In(5.0f, () => { 
+            Debug.Log("0");
+            if (StartingLocation != null) {
+                transform.position = StartingLocation.position;
+                transform.rotation = StartingLocation.rotation;
+                PlayerPlane.Health.Set(maxHealth);
+            }
         });
 
-
-        if (PlayerPlane.isLocalPlayer.Get()) {
+        /*if (PlayerPlane.isLocalPlayer.Get()) {
             Debug.Log("should disconnect: "+this.name);
 
             PhotonNetwork.LeaveRoom();
 
             vp_Timer.In(Time.deltaTime, () => { PhotonNetwork.LoadLevel("Menu_Lobby"); });
-        }
+        }*/
+    }
+
+    public virtual void OnStop_Dead() {
+
+        Debug.Log("you aren't dead anymore!");
+        PlayerPlane.gameObject.SendMessage ("HideMe", false, SendMessageOptions.DontRequireReceiver);
+
     }
 
 
@@ -177,6 +240,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(parentViewID);
 		    stream.SendNext(currentHealth);
 		    stream.SendNext(KillCount);
+            stream.SendNext(isVictorious);
 		} else {
 		    // Network player, receive data
             int sentViewID = (int)stream.ReceiveNext();
@@ -185,6 +249,7 @@ public class mt_basicstats : MonoBehaviourPunCallbacks, IPunObservable
 
 		    this.currentHealth = (int)stream.ReceiveNext();
 		    this.KillCount = (int)stream.ReceiveNext();
+            this.isVictorious = (bool)stream.ReceiveNext();
 		}
     }
     #endregion

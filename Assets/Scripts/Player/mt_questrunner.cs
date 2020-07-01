@@ -40,6 +40,7 @@ public class mt_questrunner : MonoBehaviour {
     	if (viewID == PlayerPlane.GetPlayerView.Get()) {
     		if (PlayerPlane.HasMcGuffin.Get()) {
     			Debug.Log("you win!");
+                PlayerPlane.ShowVictoryPanel.Send();
     		}
     	}
 

@@ -40,6 +40,8 @@ public class mt_EventHandler : vp_StateEventHandler {
     public vp_Value<bool> CanInteract;
     public vp_Message<int> DamageMe;
     public vp_Value<bool> isLocalPlayer;
+    public vp_Value<Transform> StartingLocation;
+    public vp_Value<bool> isVictorious;
 
     //Notifications!
     public vp_Message HealthChanged;

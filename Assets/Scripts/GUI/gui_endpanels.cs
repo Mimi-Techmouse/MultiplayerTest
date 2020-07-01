@@ -1,0 +1,114 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using Photon.Pun;
+
+public class gui_endpanels : MonoBehaviour {
+
+	public GameObject StartPanel = null;
+	public GameObject VictoryPanel = null;
+	public GameObject LossPanel = null;
+
+    protected mt_PlayerEventHandler m_PlayerPlane = null;
+    public mt_PlayerEventHandler PlayerPlane
+    {
+        get
+        {
+            if (m_PlayerPlane == null)
+                m_PlayerPlane = transform.parent.parent.GetComponent<mt_PlayerEventHandler>();
+            return m_PlayerPlane;
+        }
+    }
+
+	void Start() {
+	    VictoryPanel.SetActive(false);
+	    LossPanel.SetActive(false);
+	    StartPanel.SetActive(false);
+	    PlayerPlane.ShowStartPanel.Send();
+	}
+    
+    void Update() {
+
+	    if (vp_Input.GetButtonDown("Menu")) {
+	    	StartPanel.SetActive(false);
+	    	VictoryPanel.SetActive(false);
+	    	LossPanel.SetActive(false);
+	    }
+
+	}
+
+	public void LogOff() {
+
+        Debug.Log("should disconnect: "+this.name);
+
+		PhotonNetwork.LeaveRoom();
+
+        vp_Timer.In(Time.deltaTime, () => { PhotonNetwork.LoadLevel("Menu_Lobby"); });
+
+	}
+
+	public void HideStartPanel() {
+
+		Debug.Log("hiding the start panel!");
+
+		PlayerPlane.HideStartPanel.Send();
+
+	}
+
+    /// <summary>
+    /// Show the victory panel!
+    /// </summary>
+    protected virtual void OnMessage_ShowVictoryPanel() {
+
+    	VictoryPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// Show the looser panel :(
+    /// </summary>
+    protected virtual void OnMessage_ShowLossPanel() {
+
+    	LossPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// Show the start panel
+    /// </summary>
+    protected virtual void OnMessage_ShowStartPanel() {
+
+    	StartPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// Show the start panel
+    /// </summary>
+    protected virtual void OnMessage_HideStartPanel() {
+
+    	StartPanel.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// registers this component with the event handler (if any)
+    /// </summary>
+    public virtual void OnEnable()
+    { 
+
+        if (PlayerPlane != null)
+            PlayerPlane.Register(this);
+
+    }
+
+
+    /// <summary>
+    /// unregisters this component from the event handler (if any)
+    /// </summary>
+    public virtual void OnDisable()
+    {
+
+        if (PlayerPlane != null)
+            PlayerPlane.Unregister(this);
+
+    }
+}

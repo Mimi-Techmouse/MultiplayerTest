@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mt_spawnplayer : MonoBehaviour
+public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject PlayerPrefab = null;
     public GameObject[] SpawnPoints;
     public Color[] PlayerColors;
 
     public GameObject[] ActivePlayers = null;
+
+    public bool gameEnded = false;
 
     private void Start() {
     	GameObject player = PhotonNetwork.Instantiate("Prefabs/"+PlayerPrefab.name, transform.position, Quaternion.identity);
@@ -19,6 +21,10 @@ public class mt_spawnplayer : MonoBehaviour
     	if (SpawnPoints.Length > id) {
     		player.transform.position = SpawnPoints[id].transform.position;
     		player.transform.rotation = SpawnPoints[id].transform.rotation;
+
+            mt_EventHandler handler = player.GetComponent<mt_EventHandler>();
+            handler.StartingLocation.Set(SpawnPoints[id].transform);
+            
     		Debug.Log("assigning position: "+SpawnPoints[id].name);
 
             SpawnPoints[id].transform.parent.GetComponentInChildren<mt_goaltrigger>().playerView = player.GetComponent<PhotonView>().ViewID;
@@ -32,8 +38,22 @@ public class mt_spawnplayer : MonoBehaviour
         vp_Timer.In(0.5f, () => { SetPlayerColors(); });
     }
 
+    private void Update() {
+        if (gameEnded) {
+            Debug.Log("we should end the game!!!");
+
+            foreach (GameObject player in ActivePlayers) {
+                mt_PlayerEventHandler handler = player.GetComponent<mt_PlayerEventHandler>();
+                if (handler.isVictorious.Get())
+                    handler.ShowVictoryPanel.Send();
+                else
+                    handler.ShowLossPanel.Send();
+            }
+            gameEnded = false;
+        }
+    }
+
     private void SetPlayerColors() {
-        Debug.Log("looking for players!");
         ActivePlayers = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in ActivePlayers) {
 
@@ -65,4 +85,19 @@ public class mt_spawnplayer : MonoBehaviour
             haulerModel.GetComponent<MeshRenderer> ().material = newMat;
         }
     }
+
+    /// <summary>
+    /// Networking section!
+    /// </summary>
+    #region IPunObservable implementation
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.IsWriting) {
+            // We own this player: send the others our data
+            stream.SendNext(gameEnded);
+        } else {
+            // Network player, receive data
+            this.gameEnded = (bool)stream.ReceiveNext();
+        }
+    }
+    #endregion
 }

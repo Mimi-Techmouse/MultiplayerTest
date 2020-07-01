@@ -496,6 +496,39 @@ public class mt_playerinput : vp_Component
 
 
 	/// <summary>
+	/// Bring back input when you aren't dead anymore!
+	/// </summary>
+    protected virtual void OnStop_Dead() {
+    	m_AllowGameplayInput = true;
+    }
+
+    protected virtual void OnMessage_HideStartPanel() {
+    	m_AllowGameplayInput = true;
+    	vp_Utility.LockCursor = true;
+    }
+
+    protected virtual void OnMessage_ShowStartPanel() {
+    	m_AllowGameplayInput = false;
+    	vp_Utility.LockCursor = false;
+    }
+
+	/// <summary>
+	/// When panels are visible - don't allow other input
+	/// </summary>
+    protected virtual void OnMessage_ShowVictoryPanel() {
+    	m_AllowGameplayInput = false;
+    	vp_Utility.LockCursor = false;
+    }
+
+	/// <summary>
+	/// When panels are visible - don't allow other input
+	/// </summary>
+    protected virtual void OnMessage_ShowLossPanel() {
+    	m_AllowGameplayInput = false;
+    	vp_Utility.LockCursor = false;
+    }
+
+	/// <summary>
 	/// pauses the game by setting timescale to zero, or unpauses
 	/// it by resuming the timescale that was active upon pause.
 	/// NOTE: will not work in multiplayer

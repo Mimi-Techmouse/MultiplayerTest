@@ -25,6 +25,10 @@ public class mt_PlayerEventHandler : mt_EventHandler {
     public vp_Message FindAndLockTarget;
     public vp_Message<GameObject> GrabMcGuffin;
     public vp_Message LooseMcGuffin;
+    public vp_Message ShowVictoryPanel;
+    public vp_Message ShowLossPanel;
+    public vp_Message ShowStartPanel;
+    public vp_Message HideStartPanel;
     public vp_Value<Transform> McGuffin;
     public vp_Value<bool> HasMcGuffin;
 
