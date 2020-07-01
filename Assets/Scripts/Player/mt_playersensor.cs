@@ -144,7 +144,7 @@ public class mt_playersensor : MonoBehaviour
 	}
 
 	public virtual void OnMessage_FindAndLockTarget() {
-		float thickness = 1.5f; 
+		float thickness = 3.0f; 
 		Vector3 origin = PlayerPlane.Crosshair.Get().transform.position;
 		Vector3 direction = transform.TransformDirection(Vector3.forward);
 		RaycastHit hit;
