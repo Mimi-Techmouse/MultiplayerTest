@@ -27,7 +27,7 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
             
     		Debug.Log("assigning position: "+SpawnPoints[id].name);
 
-            SpawnPoints[id].transform.parent.GetComponentInChildren<mt_goaltrigger>().playerView = player.GetComponent<PhotonView>().ViewID;
+            //SpawnPoints[id].transform.parent.GetComponentInChildren<mt_goaltrigger>().playerView = player.GetComponent<PhotonView>().ViewID;
             
     	} else {
     		Debug.Log("Don't have a spawn position; falling back on default.");
@@ -49,7 +49,7 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
                 else
                     handler.ShowLossPanel.Send();
             }
-            gameEnded = false;
+            //gameEnded = false;
         }
     }
 
@@ -59,6 +59,8 @@ public class mt_spawnplayer : MonoBehaviourPunCallbacks, IPunObservable
 
             float thing = (p.GetComponent<PhotonView>().ViewID/1000.0f);
             int id = Mathf.FloorToInt(thing)-1;
+            SpawnPoints[id].transform.parent.GetComponentInChildren<mt_goaltrigger>().playerView = p.GetComponent<PhotonView>().ViewID;
+            
 
             Transform objToColor = p.transform.Find("Fuselage");
 
