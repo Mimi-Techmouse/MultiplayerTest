@@ -15,6 +15,7 @@ public class mt_fireweapon : MonoBehaviour {
 	protected mt_bulletfly lastBullet;
 
     protected int checkedForPlayer = 0;
+    public bool isTurret = false;
 
     public mt_EventHandler m_PlayerPlane = null;
     public mt_EventHandler PlayerPlane
@@ -25,7 +26,7 @@ public class mt_fireweapon : MonoBehaviour {
                 if (Handler != null)
                     m_PlayerPlane = Handler.GetComponent<mt_EventHandler>();
                 else
-                    m_PlayerPlane = transform.root.GetComponent<mt_EventHandler>();
+                    m_PlayerPlane = transform.parent.parent.GetComponent<mt_EventHandler>();
             }
             return m_PlayerPlane;
         }
@@ -33,6 +34,9 @@ public class mt_fireweapon : MonoBehaviour {
 
     //Removing extra instantiations
     public void Update() {
+
+        if (isTurret)
+            return;
 
         if (PlayerPlane == null)
             checkedForPlayer++;

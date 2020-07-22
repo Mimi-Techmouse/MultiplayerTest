@@ -15,7 +15,7 @@ public class mt_turretgunrotation : MonoBehaviour
         get
         {
             if (m_PlayerPlane == null)
-                m_PlayerPlane = transform.root.GetComponent<mt_EventHandler>();
+                m_PlayerPlane = transform.parent.parent.GetComponent<mt_EventHandler>();
             return m_PlayerPlane;
         }
     }
